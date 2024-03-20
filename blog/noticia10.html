@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BLOG</title>
+    <!-- Bootstrap core CSS -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img 
+      {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      .seta
+      {
+        width: 25%;
+        border-style: none;
+        margin-left: -2%;
+        margin-top: -1%;
+        margin-bottom: 5%;
+      }
+
+      .noticias
+      {
+        background-color:white;
+        margin-top: 3%;
+      }
+
+      .noticias2
+      {
+        background-color:white;
+        margin-top: 1%;
+        margin-left: 1%;
+        margin: 0;
+      }
+
+      .emlinha
+      {
+        display: inline-flex;
+      }
+
+      .rodape
+      {
+        background-color: white;
+        bottom: 0%;
+        left: 0;
+        height: auto;
+        width: 100%;
+        overflow:hidden;
+      }
+
+      .fundo
+      {
+        background-color: #eee;
+        position: relative;
+        padding-bottom: 100px; /* altura do rodapé */
+      }
+
+      @media (min-width: 768px) 
+      {
+        .bd-placeholder-img-lg 
+        {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="css/carousel.css" rel="stylesheet">
+  </head>
+  <body class="fundo">
+    
+<header>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">Blog</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          <li class="nav-item">
+            <a class="nav-link active" href="index.html" aria-current="page" href="#">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="index.html#cat1">Categoria 1</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="index.html#cat2" tabindex="-1" aria-disabled="true">Categoria 2</a>
+          </li>
+        </ul>
+        <form class="d-flex" style="margin-right: 30%;">
+          <input class="form-control me-2" type="search" placeholder="Digite aqui para buscar" aria-label="Search">
+          <button class="btn btn-warning" type="submit">Procurar</button>
+        </form>
+        <a href="login.html" class="btn btn-primary" style="margin-left: 1%;">Login</a>&nbsp;&nbsp;
+        <a href="registro.html" class="btn btn-success">Registrar</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+<div class="container marketing noticias">
+  <div class="row">
+    <div class="card text-center">
+      <div class="card-header">
+        <h4><b>Titulo: Noticia 10</b></h4>
+      </div>
+      <div class="card-body">
+        <img src="img/img.jpg" style="width: 50%;border-radius: 5%">
+        <br>
+        <p class="text-center" style="margin-top: 2%;">Conteudo da noticia 10</p>
+      </div>
+      <div class="card-footer text-muted">
+        Noticia visualizado agora
+      </div>
+    </div>
+  </div>    
+</div>
+
+<br><br>
+
+<footer class="footer navbar-fixed-bottom" style="margin-bottom: -6%;">
+
+  <div class="container-fluid rodape">
+    <div class="row-fluid">
+            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+              <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Inicio</a></li>
+              <li class="nav-item"><a href="index.html#cat1" class="nav-link px-2 text-muted">Categoria 1</a></li>
+              <li class="nav-item"><a href="index.html#cat2" class="nav-link px-2 text-muted">Categoria 2</a></li>
+            </ul>
+    </div>
+    <div class="row-fluid">
+      <div class="col-md-11 text-center">© 2024 TeuSiteOnline, Inc</div>
+      <div class="col-md-1" style="margin-left: auto;margin-top: -1%;">
+          <a href="#" Onclick ="backToTop()" id="btnTop"><img class="img-fluid seta" src="img/seta.png"></a>
+      </div>
+    </div>      
+  </div>
+
+</footer>
+
+  <!-- FOOTER -->
+</main>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>

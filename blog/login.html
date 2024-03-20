@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      .imagem 
+      {
+        vertical-align: middle;
+        border-style: none; 
+        margin-left: 20%;
+      }
+
+      .fundo
+      {
+        background-color: cadetblue;
+      }
+
+      .camada
+      {
+
+        background-color: white;
+        border-radius: 10px;
+        display: flex;
+        margin-top: 10%;
+      }
+    </style>
+    
+    <!-- Custom styles for this template -->
+
+  </head>
+  <body class="fundo">
+    
+<main>
+
+    <div class="container-fluid camada col-md-8 px-4 py-5">
+        <div class="row-fluid">
+            <div class="col-md-8 justify-content-center align-items-center">
+                <div class="row-fluid">
+                    <img src="img/blog.png" class="imagem img-fluid" width="100%">
+                </div>
+            </div>
+        </div> 
+        <div class="row-fluid"></div>   
+            <div class="col-md-4 justify-content-center align-items-center">
+                <form class="p-4 border rounded-3 bg-light">
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                    <label for="floatingInput">Email</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                    <label for="floatingPassword">Senha</label>
+                </div>
+                <div class="checkbox mb-3">
+                    <label>
+                    <input type="checkbox" value="lembrar-me"> Lembrar-me
+                    </label>
+                </div>
+                <button class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
+                <hr class="my-4">
+                <a href="registro.html" class="w-100 btn btn-lg btn-success">Registrar</a>
+                </form>
+            </div>
+        </div>    
+    </div>
+
+</main>
+    <script src="js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
