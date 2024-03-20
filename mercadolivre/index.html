@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="styles/css/Index.css">
+    <link rel="stylesheet" href="styles/css/Main.css">
+    <link rel="stylesheet" href="styles/css/Header.css">
+    <link rel="stylesheet" href="styles/css/Footer.css">
+    <link rel="stylesheet" href="styles/css/BlueberryCode-Framework.css">
+    <link rel="stylesheet" href="busca/css/index.css">
+    <link rel="stylesheet" href="fontawesome/css/fontawesome.min.css">
+    <link href="fontawesome/css/brands.css" rel="stylesheet">
+    <link href="fontawesome/css/solid.css" rel="stylesheet">
+    <title>Resultados de busca</title>
+</head>
+<body>
+    
+    <header>
+        <div class="nav-container">
+            <div class="nav-row-1">
+                <div class="nav-logo-image">
+                    <img src="img/logo.webp" class="img-fluid" alt="Logo da empresa">
+                </div>
+                <form class="nav-search-bar" style="margin-left: 5%;border-style: none;height: 0%;">
+                    <input type="text" placeholder="Buscar produtos...">
+                    <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </form>
+                <div class="text right">
+                    <img src="img/D_NQ_717994-MLA73780157152_012024-OO.webp" class="img-fluid" style="margin-left:5%;width: 100%;">
+                </div>
+            </div>
+        </div>
+            <div class="nav-row-2" style="margin-left: 19%;">
+                <div class="nav-cep-logged">
+                    <div id="nav-cep" class="nav-menu-cep">
+                        <i class="fa-solid fa-location-dot"></i>&nbsp;&nbsp;
+                        <div class="nav-cep-data nav-cep-data-logged">
+                            <span class="nav-cep-send">Enviar para</span>
+                            <div>
+                                <span>Av. Rep. Libano</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <ul class="nav-menu-bar">
+                    <li class="nav-menu-item">
+                        <a class="nav-menu-link" href="#">Início</a>
+                    </li>
+                    <li class="nav-menu-item nav-menu-category">
+                        <a class="nav-menu-link" href="#">Categorias 
+                            <i class="fa-solid fa-caret-down"></i>
+                        </a>
+                        <ul class="nav-menu-category-dropdown">
+                            <li> <a href="#">Veículos</a></li>
+                            <li><a href="#">Tecnologia</a></li>
+                            <li><a href="#">Casa e eletrodomésticos</a></li>
+                            <li><a href="#">Acessórios para veículos</a></li>
+                            <li><a href="#">Esporte e lazer</a></li>
+                            <li><a href="#">Jóias e relógios</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-menu-item">
+                        <a class="nav-menu-link" href="#">Últimos lançamentos</a>
+                    </li>
+                    <li class="nav-menu-item">
+                        <a class="nav-menu-link" href="#">Sobre nós</a>
+                    </li>
+                    <li class="nav-menu-item">
+                        <a class="nav-menu-link" href="#">Contato</a>
+                    </li>
+                    <li class="nav-menu-item">
+                        <a class="nav-menu-link" href="#">Crie sua conta</a>
+                    </li>
+                    <li class="nav-menu-item">
+                        <a class="nav-menu-link" href="#">Entre</a>
+                    </li>
+                    <li class="nav-menu-item">
+                        <a class="nav-menu-link" href="#">Compras</a>
+                    </li>
+                    <li class="nav-menu-item">
+                        <a class="nav-menu-link" href="#">&nbsp;&nbsp;<i class="fa-regular fa-cart-shipping"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <br>
+    </header>
+
+    <main>
+        <div class="main-container">
+            <div class="filters">
+                <div class="user-search">
+                    <h1>iphone x</h1>
+                </div>
+                <div class="quantity-results">
+                    <span>20</span>
+                    <span>resultados</span>
+                </div>
+                <div class="filters-groups">
+                    <div class="filter-group filter-order-by">
+                        <h3 class="groud-title">Ordenar por</h3>
+                        <div class="filter-group-option">
+                            <a href="#">Padrão</a>
+                            <a href="#">Mais vendidos</a>
+                            <a href="#">Melhor avaliação</a>
+                        </div>
+                    </div>
+                    <div class="filter-group filters-price">
+                        <h3 class="groud-title">Preço</h3>
+                        <div class="filter-group-option">
+                            <a href="#">Menor para o maior</a>
+                            <a href="#">Maior para o menor</a>
+                            <!-- <div class="price-range-container">
+                                <input
+                                    class="price-range" 
+                                    type="range"
+                                    min="3000"
+                                    max="6000"
+                                    value="4500"
+                                >
+                            </div> -->
+                        </div>
+                    </div>
+                    <div class="filter-group filters-avaliation">
+                        <h3 class="groud-title">Avaliações</h3>
+                        <div class="filter-group-option">
+                            <a href="#">4 ou mais estrelas</a>
+                            <a href="#">3 a 3,99 estrelas</a>
+                            <a href="#">3 ou menos estrelas</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="results-search">
+                <div class="search-result-list">
+                    <div class="card-item results-item">
+                        <div class="product-item">
+                            <a class="item-image" href="#">
+                                <img width="160" height="160" src="img/iphone.webp" alt="Apple iPhone XR 64 GB - Preto">
+                            </a>
+                            <div class="item-info-container">
+                                <div class="item-info">
+                                    <span class="item-name">
+                                        <a href="#">Apple iPhone X 64 GB Cinza-espacial</a>
+                                    </span>
+                                    <div class="price-review-container">
+                                        <div class="item-price">
+                                            <span>R$</span>
+                                            <span>4000</span>
+                                        </div>
+                                        <div class="item-review">
+                                            <div class="stars" style="color: #3483fa;">
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-regular fa-star"></i>
+                                            </div>
+                                            <div class="review-quantity">
+                                                10
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item-description">
+                                        <!-- <div class="divided-times">
+                                            <span>12x </span>
+                                            <span>400,50</span>
+                                        </div> -->
+                                        <div class="divided-times free-interest">
+                                            <span style="color: black;">em&nbsp;</span>
+                                            <span>12x </span>
+                                            <span>400,50</span>
+                                            <span>sem juros</span>
+                                        </div>
+                                        <!-- <div class="delivery-price">
+                                            <span>Envio:</span>
+                                            <span>R$</span>
+                                            <span>20,00</span>
+                                            <span>a</span>
+                                            <span>R$</span>
+                                            <span>100,00</span>
+                                        </div> -->
+                                        <div class="delivery-price free-delivery">
+                                            <span><b>Frete grátis</b></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-item">
+                            <a class="item-image" href="#">
+                                <img width="160" height="160" src="img/iphone.webp" alt="Apple iPhone XR 64 GB - Preto">
+                            </a>
+                            <div class="item-info-container">
+                                <div class="item-info">
+                                    <span class="item-name">
+                                        <a href="#">Apple iPhone X 64 GB Cinza-espacial</a>
+                                    </span>
+                                    <div class="price-review-container">
+                                        <div class="item-price">
+                                            <span>R$</span>
+                                            <span>4000</span>
+                                        </div>
+                                        <div class="item-review">
+                                            <div class="stars" style="color: #3483fa;">
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-regular fa-star"></i>
+                                            </div>
+                                            <div class="review-quantity">
+                                                10
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item-description">
+                                        <!-- <div class="divided-times">
+                                            <span>12x </span>
+                                            <span>400,50</span>
+                                        </div> -->
+                                        <div class="divided-times free-interest">
+                                            <span style="color: black;">em&nbsp;</span>
+                                            <span>12x </span>
+                                            <span>400,50</span>
+                                            <span>sem juros</span>
+                                        </div>
+                                        <!-- <div class="delivery-price">
+                                            <span>Envio:</span>
+                                            <span>R$</span>
+                                            <span>20,00</span>
+                                            <span>a</span>
+                                            <span>R$</span>
+                                            <span>100,00</span>
+                                        </div> -->
+                                        <div class="delivery-price free-delivery">
+                                            <span><b>Frete grátis</b></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-item">
+                            <a class="item-image" href="#">
+                                <img width="160" height="160" src="img/iphone.webp" alt="Apple iPhone XR 64 GB - Preto">
+                            </a>
+                            <div class="item-info-container">
+                                <div class="item-info">
+                                    <span class="item-name">
+                                        <a href="#">Apple iPhone X 64 GB Cinza-espacial</a>
+                                    </span>
+                                    <div class="price-review-container">
+                                        <div class="item-price">
+                                            <span>R$</span>
+                                            <span>4000</span>
+                                        </div>
+                                        <div class="item-review">
+                                            <div class="stars" style="color: #3483fa;">
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-regular fa-star"></i>
+                                            </div>
+                                            <div class="review-quantity">
+                                                10
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item-description">
+                                        <!-- <div class="divided-times">
+                                            <span>12x </span>
+                                            <span>400,50</span>
+                                        </div> -->
+                                        <div class="divided-times free-interest">
+                                            <span style="color: black;">em&nbsp;</span>
+                                            <span>12x </span>
+                                            <span>400,50</span>
+                                            <span>sem juros</span>
+                                        </div>
+                                        <!-- <div class="delivery-price">
+                                            <span>Envio:</span>
+                                            <span>R$</span>
+                                            <span>20,00</span>
+                                            <span>a</span>
+                                            <span>R$</span>
+                                            <span>100,00</span>
+                                        </div> -->
+                                        <div class="delivery-price free-delivery">
+                                            <span><b>Frete grátis</b></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-item">
+                            <a class="item-image" href="#">
+                                <img width="160" height="160" src="img/iphone.webp" alt="Apple iPhone XR 64 GB - Preto">
+                            </a>
+                            <div class="item-info-container">
+                                <div class="item-info">
+                                    <span class="item-name">
+                                        <a href="#">Apple iPhone X 64 GB Cinza-espacial</a>
+                                    </span>
+                                    <div class="price-review-container">
+                                        <div class="item-price">
+                                            <span>R$</span>
+                                            <span>4000</span>
+                                        </div>
+                                        <div class="item-review">
+                                            <div class="stars" style="color: #3483fa;">
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-regular fa-star"></i>
+                                            </div>
+                                            <div class="review-quantity">
+                                                10
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item-description">
+                                        <!-- <div class="divided-times">
+                                            <span>12x </span>
+                                            <span>400,50</span>
+                                        </div> -->
+                                        <div class="divided-times free-interest">
+                                            <span style="color: black;">em&nbsp;</span>
+                                            <span>12x </span>
+                                            <span>400,50</span>
+                                            <span>sem juros</span>
+                                        </div>
+                                        <!-- <div class="delivery-price">
+                                            <span>Envio:</span>
+                                            <span>R$</span>
+                                            <span>20,00</span>
+                                            <span>a</span>
+                                            <span>R$</span>
+                                            <span>100,00</span>
+                                        </div> -->
+                                        <div class="delivery-price free-delivery">
+                                            <span><b>Frete grátis</b></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pagination pagination-primary-color">
+                    <a class="previous" href="">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </a>
+                    <a class="page-active" href="">1</a>
+                    <a href="">2</a>
+                    <a href="">3</a>
+                    <a href="">4</a>
+                    <a class="next" href="">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </a>
+                </div>
+        </div>    
+    </main>
+
+    <footer style="margin-bottom: -2%;">
+        <div class="footer-container" style="margin-top: 0%;">
+            <div class="footer-row-1">
+                <div class="footer-my-account">
+                    <div class="footer-section-title">
+                        <h3>Minha Conta</h3>
+                    </div>
+                    <ul class="my-account-content">
+                        <li>
+                            <a href="#">Login / Cadastro</a>
+                        </li>
+                        <li>
+                            <a href="#">Minhas compras</a>
+                        </li>
+                        <li>
+                            <a href="#">Carrinho de compras</a>
+                        </li>
+                        <li>
+                            <a href="#">Meus endereços</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-support">
+                    <div class="footer-section-title">
+                        <h3>Central de atendimento</h3>
+                    </div>
+                    <div class="support-content">
+                        <div class="support-email">
+                            <div>
+                                <i class="fa-solid fa-envelope"></i>
+                                <span>E-mail</span>
+                            </div>
+                            <a href="#">email@site.com.br</a>
+                        </div>
+                        <div class="support-schedule">
+                            <span><b>Horário de entedimento</b></span>
+                            <span>Segunda a sexta-feira, das 08h às 17h.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-payment-methods">
+                    <div class="footer-section-title">
+                        <h3>Formas de pagamento</h3>
+                    </div>
+                    <ul class="payment-methods-content">
+                        <li>
+                            <img class="mastercard" src="img/mastercard.svg" alt="MasterCard">
+                        </li>
+                        <li class="visa-content">
+                            <img class="visa" src="img/visa.svg" alt="Visa">
+                        </li>
+                        <li>
+                            <img class="boleto" src="img/boleto.svg" alt="Boleto">
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-delivery-methods">
+                    <div class="footer-section-title">
+                        <h3>Formas de Entrega</h3>
+                    </div>
+                    <div class="delivery-methods-content">
+                        <img src="img/correios.svg" alt="Correios">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="js/header/nav-menu-cep.js" type="text/javascript"></script>
+    <script src="js/main/recommendations-carousel.js" type="text/javascript"></script>
+    <script src="fontawesome/js/fontawesome.min.js" type="text/javascript"></script>
+</body>
+
+</html>
