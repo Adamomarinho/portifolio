@@ -1,4 +1,4 @@
-## 🏆 Projetos BLOG ##
+## 🏆 Projeto BLOG ##
 
 - [Projeto OS](https://www.teusiteonline.com.br/portifolio/blog/): Uma demonstração visual do codigo em funcionamento.
 
