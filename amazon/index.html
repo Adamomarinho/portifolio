@@ -1,0 +1,1423 @@
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - www.codingnepalweb.com -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amazon</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/carrosel.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.slick/1.5.9/slick.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.slick/1.5.9/slick-theme.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/menuLateralDeslizante.css" rel="stylesheet">
+  <script type="text/javascript" src="js/actions.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.slick/1.5.9/slick.min.js"></script>
+  <script type="text/javascript">
+$(document).ready(mySlider);
+
+function mySlider() {
+    var imgNumber, 
+        sliderContainerWidth, 
+        imgContainer,
+        index,
+        flag = true,
+        speed = 600,
+        bullets = true,
+        auto = true ,
+        time = 5000 ;
+        
+    construction();
+    $(window).resize(construction);
+    if(auto){
+     var handle = setInterval(slideRight, time) ; 
+    }
+
+    function construction() {
+        index = 1;
+        imgNumber = $('.images-container li').length;
+        sliderContainerWidth = Math.round($('#slider-container').width());
+        imgContainer = sliderContainerWidth * imgNumber;
+        $('.images-container').css("width", imgContainer);
+        $('.images-container li').css("width", sliderContainerWidth);
+        $('.images-container').css("margin-left", 0);
+        if (bullets == true) {
+            $('.bullets-container').html("");
+            for (i = 1; i <= imgNumber; i++) {
+                $('.bullets-container').append("<span class='bullet'></span>");
+            }
+            $('.bullet').eq(0).addClass('active');
+        }
+        $(".bullet").click(pagers);
+        $('.a-right').click(slideRight);
+        $('.a-left').click(slideLeft);
+    }
+
+    function pagers() {
+        if (!$(this).hasClass('active')) {
+            var bulletIndex = $(".bullets-container span").index(this) + 1;
+            index = bulletIndex;
+            $(".bullets-container").find(".bullet").removeClass("active").eq(bulletIndex - 1).addClass("active");
+            $('.images-container').animate({
+                marginLeft: -sliderContainerWidth * (bulletIndex - 1)
+            }, speed);
+        }
+    }
+
+    function slideRight() {
+        var imgContainerLeft = parseInt($('.images-container').css('margin-left'));
+        if (flag) {
+            if (imgContainerLeft == -sliderContainerWidth * (imgNumber - 1)) {
+                index = 1;
+                $('.images-container').animate({
+                    marginLeft: 0
+                }, speed, function() {
+                    flag = true;
+                })
+            } else {
+                index++;
+                $('.images-container').animate({
+                    marginLeft: '-=' + sliderContainerWidth
+                }, speed, function() {
+                    flag = true;
+                })
+            }
+            flag = false;
+            $(".bullets-container").find(".bullet").removeClass("active").eq(index - 1).addClass("active");
+        }
+    }
+
+    function slideLeft() {
+        var imgContainerLeft = parseInt($('.images-container').css('margin-left'));
+        clearInterval(slideRight, 3000);
+        if (flag) {
+            if (imgContainerLeft == 0 ) {
+                index = index + (imgNumber - 1);
+                $('.images-container').animate({
+                    marginLeft: -sliderContainerWidth * (imgNumber - 1) + 'px'
+                }, speed, function() {
+                    flag = true;
+                })
+            } else {
+                index--;
+                $('.images-container').animate({
+                    marginLeft: '+=' + sliderContainerWidth
+                }, speed, function() {
+                    flag = true;
+                })
+            }
+            flag = false;
+            $(".bullets-container").find(".bullet").removeClass("active").eq(index - 1).addClass("active");
+        }
+
+    }
+    $("#slider-container .arrow , .bullets-container").hover(function(){
+      clearInterval(handle);
+    },function(){
+      handle = setInterval(slideRight, time) ;
+    })
+  
+};
+
+</script>
+  <style>
+
+body
+{
+  background-color: #f3f3f3;
+}
+
+.shop-head-section {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 2% 0;
+  width: 80%;
+  margin-left: 10%;
+  position: static;
+  margin-top: -20%;
+}
+
+.shop-head-images {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+  max-width: 120%;
+  width: 100%;
+}
+
+.shop-head-link {
+  background-color: #fff;
+  padding: 30px;
+  display: flex;
+  cursor: pointer;
+  flex-direction: column;
+  white-space: nowrap;
+}
+
+.shop-head-link img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.shop-head-link h3 {
+  margin-bottom: 10px;
+}
+
+.shop-head-link a {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: blue;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.shop-head-link:hover a {
+  color: #c7511f;
+  text-decoration: underline;
+}    
+
+.shop2-head-section {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: #f3f3f3;
+  padding: 2% 0;
+  width: 80%;
+  margin-left: 10%;
+  position: absolute;
+  margin-top: -30%;
+}
+
+.shop2-head-images {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+  max-width: 120%;
+  width: 100%;
+}
+
+.shop2-head-link {
+  background-color: #fff;
+  padding: 30px;
+  display: flex;
+  cursor: pointer;
+  flex-direction: column;
+  white-space: nowrap;
+}
+
+.shop2-head-link img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.shop2-head-link h3 {
+  margin-bottom: 10px;
+}
+
+.shop2-head-link a {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: blue;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.shop2-head-link:hover a {
+  color: #c7511f;
+  text-decoration: underline;
+}   
+
+.login
+{
+  background-color: #fff;
+  justify-content: center;
+  justify-items: center;
+  color: #000;
+  width: 100%;
+}
+
+.login h5
+{
+    margin-top: 1% !important;
+}
+
+.login h6
+{
+    margin-top: 1% !important;
+    margin-bottom: 1%;
+}
+
+.login a.action-button:link
+{
+    max-width: 12%;
+    text-decoration: none;
+    margin-bottom: 1% !important;
+    margin-top: 1%;
+    width: 10%;
+    display: block;
+    background-position: -10px -170px;
+    background-image: url(images/componentes.png);
+    color: #000;
+}
+
+.separador
+{
+  border-top: 1px solid #DDD;
+  height: 17px;
+}
+
+.action_inner
+{
+    cursor: pointer;
+    background-position: right -170px;
+    display: block;
+    height: 28px;
+    position: relative;
+    color: #000;
+    font-size: 12px;
+    line-height: 28px;
+    text-align: center;
+    font-weight: 700;
+    text-decoration: none;
+    text-shadow: 0 1px 0 #ffe093;
+}
+
+#container
+{
+    width: 86%;
+    margin-left:7%;
+}
+
+#slid{
+  width: 80%;
+  margin-left: 10%;;
+}
+#slider-container{
+  width:100%;
+  position:static;
+  overflow:hidden;
+  ul{
+    li{
+      float:left;
+      img{
+        width:100%;
+        float:left;
+      }
+    }
+  }
+  .arrow{
+    display:block;
+    position:absolute;
+    top:50%;
+    width:50px;
+    height:50px;
+    transform:translateY(-50%) scale(1); 
+    cursor:pointer;
+    &:before,
+    &:after{
+      content:"";
+      display:block;
+      width:34px;
+      height:1px;
+      position:absolute;
+      background:white;
+      border-top:1px solid grey;
+    }
+    @media(max-width:680px){
+      transform:translateY(-50%) scale(0.5); 
+    }
+  }
+  .arrow.a-left{
+    left:7%;
+    &:before{
+      top:0;
+      left:0;
+      margin-top:0;
+      transform:rotate(-45deg);
+      transform-origin: 100% 0;
+    }
+    &:after{
+      bottom:0;
+      left:0;
+      margin-bottom:0;
+      transform:rotate(45deg);
+      transform-origin: 100% 0;
+    }
+  }
+  .arrow.a-right{
+    right:7%;
+     &:before{
+      top:0;
+      right:0;
+      margin-top:0;
+      transform:rotate(45deg);
+      transform-origin: 0 0;
+    }
+    &:after{
+      bottom:0;
+      right:0;
+      margin-bottom:0;
+      transform:rotate(-45deg);
+      transform-origin: 0 0;
+    }
+  }
+  .bullets-container{
+    position:absolute;
+    bottom:5%;
+    left:50%;
+    transform: translateX(-50%);
+    .bullet{
+      width:15px;
+      height:15px;
+      display:inline-block;
+      border-radius:50%;
+      border:1px solid grey;
+      cursor:pointer;
+      margin:0 8px;
+      &.active{
+        background:grey;
+      }
+    }
+  }
+}
+
+  </style>
+</head>
+<body>
+    <header>
+      <nav class="navbar">
+        <div class="nav-logo" style="width: 10%;">
+          <a href="index.html"><img src="images/amazon_logo.png" alt="logo"></a>
+        </div>
+        <div class="address" style="float: left;">
+          <a href="#" class="deliver">Goiás</a>
+          <div class="map-icon">
+            <span class="material-symbols-outlined">location_on</span>
+            <a href="#" class="location">Goiânia</a>
+          </div>
+        </div>
+
+        <div class="nav-search">
+          <select class="select-search" name="opcoes">
+            <option selected="selected" value="search-alias=aps" style="text-align: center;">Todos</option>
+            <option value="search-alias=alexa-skills">Alexa Skills</option>
+            <option value="search-alias=grocery">Alimentos e Bebidas</option>
+            <option value="search-alias=warehouse-deals">Amazon Quase Novo</option>
+            <option value="search-alias=mobile-apps">Apps e Jogos</option>
+            <option value="search-alias=audible">Audiolivros Audible</option>
+            <option value="search-alias=automotive">Automotivo</option>
+            <option value="search-alias=baby">Bebês</option>
+            <option value="search-alias=beauty">Beleza</option>
+            <option value="search-alias=luxury-beauty">Beleza de Luxo</option>
+            <option value="search-alias=fashion-luggage">Bolsas, Malas e Mochilas</option>
+            <option value="search-alias=toys">Brinquedos e Jogos</option>
+            <option value="search-alias=home">Casa</option>
+            <option value="search-alias=popular">CD e Vinil</option>
+            <option value="search-alias=computers">Computadores e Informática</option>
+            <option value="search-alias=kitchen">Cozinha</option>
+            <option value="search-alias=amazon-devices">Dispositivos Amazon</option>
+            <option value="search-alias=dvd">DVD e Blu-Ray</option>
+            <option value="search-alias=appliances">Eletrodomésticos</option>
+            <option value="search-alias=electronics">Eletrônicos</option>
+            <option value="search-alias=sporting">Esportes e Aventura</option>
+            <option value="search-alias=hi">Ferramentas e Materiais de Construção</option>
+            <option value="search-alias=videogames">Games</option>
+            <option value="search-alias=mi">Instrumentos Musicais</option>
+            <option value="search-alias=garden">Jardim e Piscina</option>
+            <option value="search-alias=stripbooks">Livros</option>
+            <option value="search-alias=digital-text">Loja Kindle</option>
+            <option value="search-alias=office-products">Material para Escritório e Papelaria</option>
+            <option value="search-alias=furniture">Móveis e Decoração</option>
+            <option value="search-alias=pets">Pet Shop</option>
+            <option value="search-alias=instant-video">Prime Video</option>
+            <option value="search-alias=industrial">Produtos Industriais e Científicos</option>
+            <option value="search-alias=specialty-aps-sns">Programe e Poupe</option>
+            <option value="search-alias=fashion">Roupas, Calçados e Joias</option>
+            <option value="search-alias=fashion-womens">&#160;&#160;&#160;Feminino</option>
+            <option value="search-alias=fashion-mens">&#160;&#160;&#160;Masculino</option>
+            <option value="search-alias=fashion-girls">&#160;&#160;&#160;Meninas</option>
+            <option value="search-alias=fashion-boys">&#160;&#160;&#160;Meninos</option>
+            <option value="search-alias=fashion-baby">&#160;&#160;&#160;Bebês</option>
+            <option value="search-alias=hpc">Saúde e Cuidados Pessoais</option>
+          </select>
+            <form action="" method="post" style="display: contents;position: relative;">
+              <input type="text" placeholder="Pesquisar, amazon.com.br" class="search-input" name="pesquisar">
+              <div class="search-icon">
+                <span class="material-symbols-outlined">Search</span>
+              </div>
+            </form>  
+        </div>
+
+        <div class="sign-in">
+         <a href="#"> <p>olá, faça seu login</p>
+          <span><b>Contas e Listas</b></span></a>
+        </div>
+
+        <div class="returns">
+          <a href="#"><p>Retornos e</p>
+            <span>&amp;<b> Pedidos</b></span></a>
+        </div>
+
+        <div class="cart">
+          <a href="#">
+            <span class="material-symbols-outlined cart-icon">shopping_cart</span>
+            </a>
+            <p><b>Carrinho</b></p>
+        </div>
+      </nav>
+      
+      <div class="banner">
+        <div class="banner-content">
+          <!--
+          <div class="panel">
+            <span class="material-symbols-outlined">Menu</span>
+            <a href="#">Todos</a>
+          </div>
+          -->
+          <ul class="links">
+            <li><a href="#" style="display: inline-flex;margin-top: -15%;" onclick="openMenu();"><span class="material-symbols-outlined" style="margin-top: -5%;">Menu</span>&nbsp;Todos</a></li>
+            <li><a href="#">Venda na Amazon</a></li>
+            <li><a href="#">Mais vendidos</a></li>
+            <li><a href="#">Ofertas do dia</a></li>
+            <li><a href="#">Prime</a></li>
+            <li><a href="#">Livros</a></li>
+            <li><a href="#">Musica</a></li>
+            <li><a href="#">Presente</a></li>
+            <li><a href="#">Informatica</a></li>
+            <li><a href="#">Eletronicos</a></li>
+            <li><a href="#">Casa</a></li>
+            <li><a href="#">Jogos</a></li>
+            <li><a href="#">Novidades Amazon</a></li>
+            <li><a href="#">Ideias de presente</a></li>
+            <li><a href="#">Cuidados Pessoais</a></li>
+          </ul>
+          <div class="deals">
+            <a href="#"><b style="font-size: large;">Chegou o Amazon Quase novo</b></a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <nav class="nav">
+      <div class="navCloseBox">
+          <span class="avatar"></span>
+          <b class="titulo_menu">Olá, faça seu login</b>
+          <button class="navCloseButton" onclick="closeMenu();">
+              <span class="material-icons navCloseSpan">close</span>
+          </button>            
+      </div>
+      <ul class="navUlist">
+          <li class="navListItem">
+              <button class="navListButton">
+                  <span class="alinha_menu"><b style="font-size: large;">Destaques</b></span>
+              </button>
+          </li>
+          <li class="navListItem">
+              <button class="navListButton">
+                  <span class="alinha_menu">Mais vendidos</span>
+              </button>
+          </li>
+          <li class="navListItem">
+              <button class="navListButton">
+                  <span class="alinha_menu">Novidades na Amazon</span>
+              </button>
+          </li>
+          <li class="navListItem">
+              <button class="navListButton">
+                  <span class="alinha_menu">Produtos em alta</span>
+              </button>
+          </li>
+          <li class="navListItem" style="background-color: white;">
+            <button class="navListButton" style="border-bottom: 1px solid #d5dbdb;padding: 0;margin: 5px 0;background-color: white;">
+                <span class="menu_separador"></span>
+            </button>
+          </li>
+          <li class="navListItem">
+            <button class="navListButton">
+                <span class="alinha_menu"><b style="font-size: large;">Conteudo digital</b></span>
+            </button>
+          </li>
+          <li class="navListItem">
+              <button class="navListButton">
+                  <span class="alinha_menu">Amazon Fire TV</span>
+              </button>
+          </li>
+          <li class="navListItem">
+              <button class="navListButton">
+                  <span class="alinha_menu">Amazon Music</span><span class="arrow a-left"></span>
+              </button>
+          </li>
+          <li class="navListItem">
+              <button class="navListButton">
+                  <span class="alinha_menu">Prime Video</span>
+              </button>
+          </li>
+          <li class="navListItem">
+            <button class="navListButton">
+                <span class="alinha_menu">Aplicativos Amazon</span>
+            </button>
+          </li>
+          <li class="navListItem">
+            <button class="navListButton">
+                <span class="alinha_menu">Dispositivos Kindle</span>
+            </button>
+          </li>
+          <li class="navListItem">
+            <button class="navListButton">
+                <span class="alinha_menu">Alexa</span>
+            </button>
+          </li>
+          <li class="navListItem">
+            <button class="navListButton">
+                <span class="alinha_menu">Audiobooks</span>
+            </button>
+          </li>
+          <li class="navListItem" style="background-color: white;">
+            <button class="navListButton" style="border-bottom: 1px solid #d5dbdb;padding: 0;margin: 5px 0;background-color: white;">
+                <span class="menu_separador"></span>
+            </button>
+          </li>
+          <li class="navListItem">
+            <button class="navListButton">
+                <span class="alinha_menu"><b style="font-size: large;">Comprar por categoria</b></span>
+            </button>
+          </li>
+          <li class="navListItem">
+              <button class="navListButton">
+                  <span class="alinha_menu">Alimentos e Bebidas</span>
+              </button>
+          </li>
+          <li class="navListItem">
+              <button class="navListButton">
+                  <span class="alinha_menu">Automotivo</span><span class="arrow a-left"></span>
+              </button>
+          </li>
+          <li class="navListItem">
+              <button class="navListButton">
+                  <span class="alinha_menu">Bebês</span>
+              </button>
+          </li>
+          <li class="navListItem">
+            <button class="navListButton">
+                <span class="alinha_menu">Beleza</span>
+            </button>
+          </li>
+          <li class="navListItem" style="background-color: white;">
+            <button class="navListButton" style="border-bottom: 1px solid #d5dbdb;padding: 0;margin: 5px 0;background-color: white;">
+                <span class="menu_separador"></span>
+            </button>
+          </li>
+          <li class="navListItem">
+            <button class="navListButton">
+                <span class="alinha_menu"><b style="font-size: large;">Programas e Recursos</b></span>
+            </button>
+          </li>
+          <li class="navListItem">
+              <button class="navListButton">
+                  <span class="alinha_menu">Amazon Prime</span>
+              </button>
+          </li>
+          <li class="navListItem">
+              <button class="navListButton">
+                  <span class="alinha_menu">Mais por menos</span><span class="arrow a-left"></span>
+              </button>
+          </li>
+          <li class="navListItem">
+              <button class="navListButton">
+                  <span class="alinha_menu">Dicas de Presentes</span>
+              </button>
+          </li>
+          <li class="navListItem">
+            <button class="navListButton">
+                <span class="alinha_menu">Lista de Bebes</span>
+            </button>
+          </li>
+          <li class="navListItem" style="background-color: white;">
+            <button class="navListButton" style="border-bottom: 1px solid #d5dbdb;padding: 0;margin: 5px 0;background-color: white;">
+                <span class="menu_separador"></span>
+            </button>
+          </li>
+          <li class="navListItem">
+            <button class="navListButton">
+                <span class="alinha_menu"><b style="font-size: large;">Ajuda e Configurações</b></span>
+            </button>
+          </li>
+          <li class="navListItem">
+              <button class="navListButton">
+                  <span class="alinha_menu">Sua Conta</span>
+              </button>
+          </li>
+          <li class="navListItem">
+              <button class="navListButton">
+                  <span class="alinha_menu">Ajuda</span><span class="arrow a-left"></span>
+              </button>
+          </li>
+          <li class="navListItem">
+              <button class="navListButton">
+                  <span class="alinha_menu">Faça seu login</span>
+              </button>
+          </li>
+      </ul>
+  </nav>
+
+    <section id="container">
+      <div id="slider-container">
+        <ul class="images-container lista-img">
+          <li>
+            <img src="images/banner2.jpg">
+          </li>
+          <li>
+            <img src="images/banner3.jpg">
+          </li>
+          <li>
+            <img src="images/banner5.jpg">
+          </li>
+          <li>
+            <img src="images/banner4.jpg">
+          </li>
+          <li>
+            <img src="images/banner.jpg">
+          </li>
+        </ul>
+        <span class="arrow a-left"></span>
+        <span class="arrow a-right"></span>
+      </div>
+    </section>
+
+    <section class="shop-head-section">
+      <div class="shop-head-images">
+        <div class="shop-head-link">
+          <h3>Compre usando pontos Livelo</h3>
+          <img src="images/prod1.jpg" alt="card">
+          <a href="#">Confira como utilizar</a>
+        </div>
+        <div class="shop-link">
+          <h3>Compras no cartão viram pontos</h3>
+          <img src="images/prod2.jpg" alt="card">
+          <a href="#">Como conseguir</a>
+        </div>
+        <div class="shop-link">
+          <h3>Ouvir audiolivro</h3>
+          <img src="images/prod3.jpg" alt="card">
+          <a href="#">Ouça agora</a>
+        </div>
+        <div class="shop-link">
+          <h3>Frete gratis primeira compra</h3>
+          <img src="images/prod4.jpg" alt="card">
+          <a href="#">Saiba como aproveitar</a>
+        </div>
+      </div>
+    </section>
+
+    <div style="background-color:#f3f3f3; width: 100%;">
+      <section class="shop-section">
+        <div class="shop-images">
+          <div class="shop-link">
+            <h3>Compre Notebooks</h3>
+            <img src="images/img-1.png" alt="card">
+            <a href="#">Comprar</a>
+          </div>
+          <div class="shop-link">
+            <h3>Compre Smartwatches</h3>
+            <img src="images/img-2.png" alt="card">
+            <a href="#">Comprar</a>
+          </div>
+          <div class="shop-link">
+            <h3>Luzes e decorações</h3>
+            <img src="images/img-3.png" alt="card">
+            <a href="#">Comprar</a>
+          </div>
+          <div class="shop-link">
+            <h3>Ideias para casa</h3>
+            <img src="images/img-4.png" alt="card">
+            <a href="#">Comprar</a>
+          </div>
+        </div>
+      </section>
+    </div>   
+
+    <section class="product"> 
+      <h3>Calçados</h3>
+      <button class="pre-btn"><img src="images/arrow.png" alt=""></button>
+      <button class="nxt-btn"><img src="images/arrow.png" alt=""></button>
+      <div class="product-container">
+          
+          <div class="product-card">
+              <div class="product-image">
+                  <a href="#">
+                      <img src="images/card1.jpg" class="product-thumb" alt="">
+                  </a>    
+              </div>
+          </div>
+          <div class="product-card">
+              <div class="product-image">
+                  <a href="#">
+                    <img src="images/card2.jpg" class="product-thumb" alt="">
+                  </a>  
+              </div>
+          </div>
+          <div class="product-card">
+              <div class="product-image">
+                  <a href="#">
+                    <img src="images/card3.jpg" class="product-thumb" alt="">
+                  </a>  
+              </div>
+          </div>
+          <div class="product-card">
+              <div class="product-image">
+                    <a href="#">
+                      <img src="images/card4.jpg" class="product-thumb" alt="">
+                    </a>  
+              </div>
+          </div>
+          <div class="product-card">
+              <div class="product-image">
+                <a href="#">
+                  <img src="images/card5.jpg" class="product-thumb" alt="">
+              </a>  
+              </div>
+          </div>
+          <div class="product-card">
+              <div class="product-image">
+                <a href="#">
+                  <img src="images/card6.jpg" class="product-thumb" alt="">
+              </a>  
+              </div>
+          </div>
+          <div class="product-card">
+              <div class="product-image">
+                <a href="#">
+                  <img src="images/card7.jpg" class="product-thumb" alt="">
+              </a>  
+              </div>
+          </div>
+          <div class="product-card">
+              <div class="product-image">
+                <a href="#">
+                  <img src="images/card8.jpg" class="product-thumb" alt="">
+              </a>  
+              </div>
+          </div>
+          <div class="product-card">
+              <div class="product-image">
+                <a href="#">
+                  <img src="images/card9.jpg" class="product-thumb" alt="">
+              </a>  
+              </div>
+          </div>
+          <div class="product-card">
+              <div class="product-image">
+                <a href="#">
+                  <img src="images/card10.jpg" class="product-thumb" alt="">
+              </a>  
+              </div>
+          </div>
+      </div>
+  </section> 
+
+  <section class="product" style="margin-top: 1%;"> 
+    <h3>Eletronicos</h3>
+    <button class="pre-btn"><img src="images/arrow.png" alt=""></button>
+    <button class="nxt-btn"><img src="images/arrow.png" alt=""></button>
+    <div class="product-container">
+        
+        <div class="product-card">
+            <div class="product-image">
+                <a href="#">
+                    <img src="images/ele1.jpg" class="product-thumb" alt="">
+                </a>    
+            </div>
+        </div>
+        <div class="product-card">
+            <div class="product-image">
+                <a href="#">
+                  <img src="images/ele2.jpg" class="product-thumb" alt="">
+                </a>  
+            </div>
+        </div>
+        <div class="product-card">
+            <div class="product-image">
+                <a href="#">
+                  <img src="images/ele3.jpg" class="product-thumb" alt="">
+                </a>  
+            </div>
+        </div>
+        <div class="product-card">
+            <div class="product-image">
+                  <a href="#">
+                    <img src="images/ele4.jpg" class="product-thumb" alt="">
+                  </a>  
+            </div>
+        </div>
+        <div class="product-card">
+            <div class="product-image">
+              <a href="#">
+                <img src="images/ele5.jpg" class="product-thumb" alt="">
+            </a>  
+            </div>
+        </div>
+        <div class="product-card">
+            <div class="product-image">
+              <a href="#">
+                <img src="images/ele6.jpg" class="product-thumb" alt="">
+            </a>  
+            </div>
+        </div>
+        <div class="product-card">
+            <div class="product-image">
+              <a href="#">
+                <img src="images/ele7.jpg" class="product-thumb" alt="">
+            </a>  
+            </div>
+        </div>
+        <div class="product-card">
+            <div class="product-image">
+              <a href="#">
+                <img src="images/ele8.jpg" class="product-thumb" alt="">
+            </a>  
+            </div>
+        </div>
+        <div class="product-card">
+            <div class="product-image">
+              <a href="#">
+                <img src="images/ele9.jpg" class="product-thumb" alt="">
+            </a>  
+            </div>
+        </div>
+        <div class="product-card">
+            <div class="product-image">
+              <a href="#">
+                <img src="images/ele10.jpg" class="product-thumb" alt="">
+            </a>  
+            </div>
+        </div>
+        <div class="product-card">
+          <div class="product-image">
+            <a href="#">
+              <img src="images/ele11.jpg" class="product-thumb" alt="">
+          </a>  
+          </div>
+      </div>
+      <div class="product-card">
+        <div class="product-image">
+          <a href="#">
+            <img src="images/ele12.jpg" class="product-thumb" alt="">
+        </a>  
+        </div>
+    </div>
+    <div class="product-card">
+      <div class="product-image">
+        <a href="#">
+          <img src="images/ele13.jpg" class="product-thumb" alt="">
+      </a>  
+      </div>
+  </div>
+  <div class="product-card">
+    <div class="product-image">
+      <a href="#">
+        <img src="images/ele14.jpg" class="product-thumb" alt="">
+    </a>  
+    </div>
+</div>
+<div class="product-card">
+  <div class="product-image">
+    <a href="#">
+      <img src="images/ele15.jpg" class="product-thumb" alt="">
+  </a>  
+  </div>
+</div>
+<div class="product-card">
+  <div class="product-image">
+    <a href="#">
+      <img src="images/ele16.jpg" class="product-thumb" alt="">
+  </a>  
+  </div>
+</div>
+<div class="product-card">
+  <div class="product-image">
+    <a href="#">
+      <img src="images/ele17.jpg" class="product-thumb" alt="">
+  </a>  
+  </div>
+</div>
+    </div>
+</section> 
+
+<section class="product" style="margin-top: 1%;"> 
+  <h3>Livros</h3>
+  <button class="pre-btn"><img src="images/arrow.png" alt=""></button>
+  <button class="nxt-btn"><img src="images/arrow.png" alt=""></button>
+  <div class="product-container">
+      
+      <div class="product-card">
+          <div class="product-image">
+              <a href="#">
+                  <img src="images/book1.jpg" class="product-thumb" alt="">
+              </a>    
+          </div>
+      </div>
+      <div class="product-card">
+          <div class="product-image">
+              <a href="#">
+                <img src="images/book2.jpg" class="product-thumb" alt="">
+              </a>  
+          </div>
+      </div>
+      <div class="product-card">
+          <div class="product-image">
+              <a href="#">
+                <img src="images/book3.jpg" class="product-thumb" alt="">
+              </a>  
+          </div>
+      </div>
+      <div class="product-card">
+          <div class="product-image">
+                <a href="#">
+                  <img src="images/book4.jpg" class="product-thumb" alt="">
+                </a>  
+          </div>
+      </div>
+      <div class="product-card">
+          <div class="product-image">
+            <a href="#">
+              <img src="images/book5.jpg" class="product-thumb" alt="">
+          </a>  
+          </div>
+      </div>
+      <div class="product-card">
+          <div class="product-image">
+            <a href="#">
+              <img src="images/book6.jpg" class="product-thumb" alt="">
+          </a>  
+          </div>
+      </div>
+      <div class="product-card">
+          <div class="product-image">
+            <a href="#">
+              <img src="images/book7.jpg" class="product-thumb" alt="">
+          </a>  
+          </div>
+      </div>
+      <div class="product-card">
+          <div class="product-image">
+            <a href="#">
+              <img src="images/book8.jpg" class="product-thumb" alt="">
+          </a>  
+          </div>
+      </div>
+      <div class="product-card">
+          <div class="product-image">
+            <a href="#">
+              <img src="images/book9.jpg" class="product-thumb" alt="">
+          </a>  
+          </div>
+      </div>
+      <div class="product-card">
+          <div class="product-image">
+            <a href="#">
+              <img src="images/book10.jpg" class="product-thumb" alt="">
+          </a>  
+          </div>
+      </div>
+      <div class="product-card">
+        <div class="product-image">
+          <a href="#">
+            <img src="images/book11.jpg" class="product-thumb" alt="">
+        </a>  
+        </div>
+    </div>
+    <div class="product-card">
+      <div class="product-image">
+        <a href="#">
+          <img src="images/book12.jpg" class="product-thumb" alt="">
+      </a>  
+      </div>
+  </div>
+  <div class="product-card">
+    <div class="product-image">
+      <a href="#">
+        <img src="images/book13.jpg" class="product-thumb" alt="">
+    </a>  
+    </div>
+</div>
+<div class="product-card">
+  <div class="product-image">
+    <a href="#">
+      <img src="images/book14.jpg" class="product-thumb" alt="">
+  </a>  
+  </div>
+</div>
+<div class="product-card">
+  <div class="product-image">
+    <a href="#">
+      <img src="images/book15.jpg" class="product-thumb" alt="">
+  </a>  
+  </div>
+</div>
+<div class="product-card">
+  <div class="product-image">
+    <a href="#">
+      <img src="images/book16.jpg" class="product-thumb" alt="">
+  </a>  
+  </div>
+</div>
+<div class="product-card">
+  <div class="product-image">
+    <a href="#">
+      <img src="images/book17.jpg" class="product-thumb" alt="">
+  </a>  
+  </div>
+</div>
+<div class="product-card">
+  <div class="product-image">
+    <a href="#">
+      <img src="images/book18.jpg" class="product-thumb" alt="">
+  </a>  
+  </div>
+</div>
+  </div>
+</section> 
+
+<div style="background-color:#f3f3f3; width: 100%;">
+  <section class="shop-section">
+    <div class="shop-images">
+      <div class="shop-link">
+        <h3>Compre Ventiladores</h3>
+        <img src="images/ventilador.jpg" alt="card">
+        <a href="#">Comprar</a>
+      </div>
+      <div class="shop-link">
+        <h3>Compre Alexa</h3>
+        <img src="images/alexa.jpg" alt="card">
+        <a href="#">Comprar</a>
+      </div>
+      <div class="shop-link">
+        <h3>Compre Livros</h3>
+        <img src="images/livros.jpg" alt="card">
+        <a href="#">Comprar</a>
+      </div>
+      <div class="shop-link">
+        <h3>Compre Kindles</h3>
+        <img src="images/kindle.jpg" alt="card">
+        <a href="#">Comprar</a>
+      </div>
+    </div>
+  </section>
+</div>   
+
+<section class="product"> 
+  <h3>Informatica</h3>
+  <button class="pre-btn"><img src="images/arrow.png" alt=""></button>
+  <button class="nxt-btn"><img src="images/arrow.png" alt=""></button>
+  <div class="product-container">
+      
+      <div class="product-card">
+          <div class="product-image">
+              <a href="#">
+                  <img src="images/info1.jpg" class="product-thumb" alt="">
+              </a>    
+          </div>
+      </div>
+      <div class="product-card">
+          <div class="product-image">
+              <a href="#">
+                <img src="images/info2.jpg" class="product-thumb" alt="">
+              </a>  
+          </div>
+      </div>
+      <div class="product-card">
+          <div class="product-image">
+              <a href="#">
+                <img src="images/info3.jpg" class="product-thumb" alt="">
+              </a>  
+          </div>
+      </div>
+      <div class="product-card">
+          <div class="product-image">
+                <a href="#">
+                  <img src="images/info4.jpg" class="product-thumb" alt="">
+                </a>  
+          </div>
+      </div>
+      <div class="product-card">
+          <div class="product-image">
+            <a href="#">
+              <img src="images/info5.jpg" class="product-thumb" alt="">
+          </a>  
+          </div>
+      </div>
+      <div class="product-card">
+          <div class="product-image">
+            <a href="#">
+              <img src="images/info6.jpg" class="product-thumb" alt="">
+          </a>  
+          </div>
+      </div>
+      <div class="product-card">
+          <div class="product-image">
+            <a href="#">
+              <img src="images/info7.jpg" class="product-thumb" alt="">
+          </a>  
+          </div>
+      </div>
+      <div class="product-card">
+          <div class="product-image">
+            <a href="#">
+              <img src="images/info9.jpg" class="product-thumb" alt="">
+          </a>  
+          </div>
+      </div>
+      <div class="product-card">
+          <div class="product-image">
+            <a href="#">
+              <img src="images/info10.jpg" class="product-thumb" alt="">
+          </a>  
+          </div>
+      </div>
+      <div class="product-card">
+        <div class="product-image">
+            <a href="#">
+              <img src="images/info11.jpg" class="product-thumb" alt="">
+            </a>  
+        </div>
+    </div>
+    <div class="product-card">
+        <div class="product-image">
+              <a href="#">
+                <img src="images/info12.jpg" class="product-thumb" alt="">
+              </a>  
+        </div>
+    </div>
+    <div class="product-card">
+        <div class="product-image">
+          <a href="#">
+            <img src="images/info13.jpg" class="product-thumb" alt="">
+        </a>  
+        </div>
+    </div>
+    <div class="product-card">
+        <div class="product-image">
+          <a href="#">
+            <img src="images/info14.jpg" class="product-thumb" alt="">
+        </a>  
+        </div>
+    </div>
+    <div class="product-card">
+        <div class="product-image">
+          <a href="#">
+            <img src="images/info15.jpg" class="product-thumb" alt="">
+        </a>  
+        </div>
+    </div>
+    <div class="product-card">
+        <div class="product-image">
+          <a href="#">
+            <img src="images/info16.jpg" class="product-thumb" alt="">
+        </a>  
+        </div>
+    </div>
+  </div>
+</section> 
+
+<section class="product" style="margin-top: 1%;"> 
+<h3>Kindle</h3>
+<button class="pre-btn"><img src="images/arrow.png" alt=""></button>
+<button class="nxt-btn"><img src="images/arrow.png" alt=""></button>
+<div class="product-container">
+    
+    <div class="product-card">
+        <div class="product-image">
+            <a href="#">
+                <img src="images/k1.jpg" class="product-thumb" alt="">
+            </a>    
+        </div>
+    </div>
+    <div class="product-card">
+        <div class="product-image">
+            <a href="#">
+              <img src="images/k2.jpg" class="product-thumb" alt="">
+            </a>  
+        </div>
+    </div>
+    <div class="product-card">
+        <div class="product-image">
+            <a href="#">
+              <img src="images/k3.jpg" class="product-thumb" alt="">
+            </a>  
+        </div>
+    </div>
+    <div class="product-card">
+        <div class="product-image">
+              <a href="#">
+                <img src="images/k4.jpg" class="product-thumb" alt="">
+              </a>  
+        </div>
+    </div>
+    <div class="product-card">
+        <div class="product-image">
+          <a href="#">
+            <img src="images/k5.jpg" class="product-thumb" alt="">
+        </a>  
+        </div>
+    </div>
+    <div class="product-card">
+        <div class="product-image">
+          <a href="#">
+            <img src="images/k6.jpg" class="product-thumb" alt="">
+        </a>  
+        </div>
+    </div>
+    <div class="product-card">
+        <div class="product-image">
+          <a href="#">
+            <img src="images/k7.jpg" class="product-thumb" alt="">
+        </a>  
+        </div>
+    </div>
+    <div class="product-card">
+        <div class="product-image">
+          <a href="#">
+            <img src="images/k8.jpg" class="product-thumb" alt="">
+        </a>  
+        </div>
+    </div>
+    <div class="product-card">
+        <div class="product-image">
+          <a href="#">
+            <img src="images/k9.jpg" class="product-thumb" alt="">
+        </a>  
+        </div>
+    </div>
+    <div class="product-card">
+        <div class="product-image">
+          <a href="#">
+            <img src="images/k10.jpg" class="product-thumb" alt="">
+        </a>  
+        </div>
+    </div>
+    <div class="product-card">
+      <div class="product-image">
+        <a href="#">
+          <img src="images/k13.jpg" class="product-thumb" alt="">
+      </a>  
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-image">
+        <a href="#">
+          <img src="images/k12.jpg" class="product-thumb" alt="">
+      </a>  
+      </div>
+    </div>
+
+</div>
+</section> 
+
+    <br><br>
+    <div class="login">
+        <br><div class="separador"></div><br>
+        <div style="text-align: center;">
+          <h5>Veja recomendações personalizadas</h5>
+              <a href="#" class="action-button" style="border-radius: 5px;justify-items: center;margin-inline: auto;">
+                <span class="action-inner" width="5%" style="color: #000;"><b style="font-size: small;">Faça seu login</b></span>
+              </a>
+          <h6>Cliente novo? &nbsp;<a href="#" style="text-decoration: none;color: #007185;">Comece aqui</a></h6>
+        </div>
+        <br><div class="separador"></div>
+    </div>
+
+    <footer>
+      <a href="#" Onclick ="backToTop()" id="btnTop" class="footer-title">
+        Voltar ao Topo
+      </a>
+      <div class="footer-items">
+        <ul>
+          <h3>Conheça-nos</h3>
+          <li><a href="#">Sobre a Amazon</a></li>
+          <li><a href="#">+ Informações</a></li>
+          <li><a href="#">Carreiras</a></li>
+          <li><a href="#">Imprensa</a></li>
+          <li><a href="#">Comunidade</a></li>
+          <li><a href="#">Acessibilidade</a></li>
+          <li><a href="#">Ciência</a></li>
+        </ul>
+        <ul>
+          <h3>Ganhe dinheiro conosco</h3>
+          <li><a href="#">Venda na Amazon</a></li>
+          <li><a href="#">Crie sua marca</a></li>
+          <li><a href="#">Publique seus livros</a></li>
+          <li><a href="#">Seja um associado</a></li>
+          <li><a href="#">Anuncie seus produtos</a></li>
+        </ul>
+        <ul>
+          <h3>Pagamento</h3>
+          <li><a href="#">Meios de pagamento</a></li>
+          <li><a href="#">Compra com pontos</a></li>
+          <li><a href="#">Cartão de crédito</a></li>
+        </ul>
+        <ul>
+          <h3>Deixe-nos ajudar voçê</h3>
+          <li><a href="#">Sua conta</a></li>
+          <li><a href="#">Frete e prazo</a></li>
+          <li><a href="#">Devoluções</a></li>
+          <li><a href="#">Reembolso</a></li>
+          <li><a href="#">Dispositivos</a></li>
+          <li><a href="#">Ajuda</a></li>
+        </ul>
+      </div>
+      <div style="border-top: 1px solid #3a4553;margin-top: 0%;display: block;"></div>
+    </footer>
+    <footer>
+      <div class="footer-items">
+        <div style="display: flex;position: absolute;justify-content: center;text-align: center;width: 30%;">
+            <img class="img-fluid" src="images/amazon_logo.png" style="width: 30%;">
+        </div>
+        <ul style="display: flex;position: relative;width: 80%;margin-left: 10%;font-size: x-small;margin-top: 5%;">
+            <li><a href="#"> &nbsp;&nbsp;&nbsp;&nbsp;Australia</a></li>
+            <li class="paises"><a href="#"> &nbsp;&nbsp;&nbsp;&nbsp;Canada</a></li>
+            <li class="paises"><a href="#"> &nbsp;&nbsp;&nbsp;&nbsp;Alemanha &nbsp;</a></li>
+            <li class="paises"><a href="#"> &nbsp;&nbsp;&nbsp;&nbsp;Chile &nbsp;</a></li>
+            <li class="paises"><a href="#"> &nbsp;&nbsp;&nbsp;&nbsp;Cingapura &nbsp;</a></li>
+            <li class="paises"><a href="#"> &nbsp;&nbsp;&nbsp;&nbsp;Espanha &nbsp;</a></li>
+            <li class="paises"><a href="#"> &nbsp;&nbsp;&nbsp;&nbsp;EUA &nbsp;</a></li>
+            <li class="paises"><a href="#"> &nbsp;&nbsp;&nbsp;&nbsp;França &nbsp;</a></li>
+            <li class="paises"><a href="#"> &nbsp;&nbsp;&nbsp;&nbsp;Holanda &nbsp;</a></li>
+            <li class="paises"><a href="#"> &nbsp;&nbsp;&nbsp;&nbsp;India &nbsp;</a></li>
+            <li class="paises"><a href="#"> &nbsp;&nbsp;&nbsp;&nbsp;Itália &nbsp;</a></li>
+            <li class="paises"><a href="#"> &nbsp;&nbsp;&nbsp;&nbsp;Japão &nbsp;</a></li>
+            <li class="paises"><a href="#"> &nbsp;&nbsp;&nbsp;&nbsp;Mexico &nbsp;</a></li>
+            <li class="paises"><a href="#"> &nbsp;&nbsp;&nbsp;&nbsp;Polonia &nbsp;</a></li>
+            <li class="paises"><a href="#"> &nbsp;&nbsp;&nbsp;&nbsp;Arabia &nbsp;</a></li>
+            <li class="paises"><a href="#"> &nbsp;&nbsp;&nbsp;&nbsp;Inglaterra &nbsp;</a></li>
+            <li class="paises"><a href="#"> &nbsp;&nbsp;&nbsp;&nbsp;Turquia &nbsp;</a></li>
+        </ul>
+      </div>
+    </footer>
+    <footer style="background-color: #131A22;max-width: 100%;color: #DDD;text-align: center;justify-content: center;">
+          <div class="footer-items" style="background-color: #131A22;">
+              <ul style="display: flex;position: relative;width: 70%;margin-left: 30%;font-size: x-small;margin-top: 1%;">
+                <li><a href="#"> &nbsp;&nbsp;&nbsp;&nbsp;Condições de Uso</a></li>
+                <li class="paises"><a href="#"> &nbsp;&nbsp;&nbsp;&nbsp;Notificação de Privacidade</a></li>
+                <li class="paises"><a href="#"> &nbsp;&nbsp;&nbsp;&nbsp;Cookies &nbsp;</a></li>
+                <li class="paises"><a href="#"> &nbsp;&nbsp;&nbsp;&nbsp;Anuncios baseados em interesses &nbsp;</a></li>
+              </ul>
+          </div>    
+    </footer>
+    <footer style="background-color: #131A22;max-width: 100%;color: #DDD;text-align: center;justify-content: center;height: 5rem;">
+      <div class="footer-items" style="background-color: #131A22;">
+          <p style="display: flex;position: relative;width: 60%;margin-left: 40%;font-size: small;margin-top: -1%;">© 2021-2024 Amazon.com, Inc. ou suas afiliadas</p>
+      </div>    
+</footer>
+<script type="text/javascript" src="js/volta-topo.js"></script>
+<script type="text/javascript" src="js/carrosel.js"></script>
+</body>
+</html>
