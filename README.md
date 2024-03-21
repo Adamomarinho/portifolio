@@ -4,7 +4,7 @@ Neste repositorio estarei disponibilizando alguns modelos de sites que fiz apena
 
 ## 🏆 Projetos Destacados ##
 
-- [Projeto OS](https://github.com/Adamomarinho/portifolio/OS): Uma descrição breve do projeto e suas principais características.
-- [Projeto Sanções](https://github.com/Adamomarinho/portifolio/Sancoes): Uma descrição breve do projeto e suas principais características.
-- [Projeto Ponto](https://github.com/Adamomarinho/portifolio/Ponto): Uma descrição breve do projeto e suas principais características.
+- [Projeto OS](https://github.com/Adamomarinho/portifolio/tree/main/OS): Uma descrição breve do projeto e suas principais características.
+- [Projeto Sanções](https://github.com/Adamomarinho/portifolio/tree/main/Sancoes): Uma descrição breve do projeto e suas principais características.
+- [Projeto Ponto](https://github.com/Adamomarinho/portifolio/tree/main/Ponto): Uma descrição breve do projeto e suas principais características.
 
