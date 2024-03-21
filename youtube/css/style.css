@@ -1,0 +1,271 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+.video_items video {
+  width: 70%;
+  height: auto;
+}
+
+.video_items a img {
+  width: 70%;
+  height: auto;
+  object-fit: cover;
+}
+
+.video_items .details {
+  margin-top: 15px;
+}
+
+.video_items .img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  margin: 10px 20px 0 0;
+}
+
+.video_items img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.video_items .heading {
+  width: 80%;
+  color: #fff;
+}
+
+.video_items p {
+  margin: 0;
+}
+
+.video_items span {
+  margin: 0;
+  color: grey;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.flex {
+  display: flex;
+}
+
+.right {
+  width: 100%;
+  height: auto;
+  margin-left: 1%;
+}
+
+.left .left_content {
+  width: 1000px;
+}
+
+.right_content {
+  width: 100%;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex2 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.left video {
+  width: 100%;
+  height: 70vh;
+}
+
+.tags {
+  color: #014bd6;
+  font-weight: 500;
+  font-size: 15px;
+}
+
+.border_bottom {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 20px;
+}
+
+.left .view {
+  margin-top: 10px;
+}
+
+.left .icon {
+  margin-left: 30px;
+}
+
+.left .icon i {
+  margin-right: 10px;
+}
+
+.left .details {
+  margin-top: 10px;
+}
+
+.left .details h4,
+.left .details h5 {
+  margin: 0;
+  font-size: 15px;
+}
+
+.left .details h4 {
+  margin-right: 70px;
+  font-weight: 400;
+}
+
+.left .details h5 {
+  font-weight: 400;
+}
+
+.comment h4 {
+  margin-right: 70px;
+  font-weight: 500;
+}
+
+.comment h4 i {
+  margin-right: 20px;
+}
+
+.comment_self input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 15px;
+  background: none;
+  border: none;
+  outline: none;
+  color: #fff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.comment_self input::placeholder {
+  color: #fff;
+}
+
+.details_Comment h4 {
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.details_Comment h4 span {
+  margin-left: 20px;
+}
+
+.details_Comment p {
+  font-size: 14px;
+  margin: 8px 0;
+  color: black;
+}
+
+.details_Comment .icon {
+  margin: 0;
+  margin-right: 30px;
+  color: black;
+}
+
+.replay {
+  margin-left: 7%;
+  margin-top: -2%;
+}
+
+.replay .img {
+  width: 30px;
+  height: 30px;
+  color: black;
+}
+
+.replay h4 {
+  font-weight: 400;
+  margin: 0;
+  margin-top: 13px;
+  color: black;
+}
+
+.replay h4 label {
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50px;
+  font-size: 13px;
+  padding: 3px 10px;
+  color: black;
+}
+
+.replay p {
+  font-size: 14px;
+  margin-top: 10px;
+  color: black;
+}
+
+.no-replay .img {
+  text-align: center;
+  line-height: 50px;
+  color: black;
+}
+
+.no-replay h1 {
+  margin: 0;
+}
+
+.background1 {
+  background: #126a52;
+}
+
+.background2 {
+  background: #6a5412;
+}
+
+.background3 {
+  background: #12426a;
+}
+
+.details_Comment {
+  margin-top: 20px;
+  color: black;
+}
+
+.chat {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 10px;
+  width: 100%;
+  color: #fff;
+}
+
+.tags-bg {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50px;
+  font-size: 13px;
+  padding: 3px 10px;
+  color: #fff;
+}
+
+.right .tags {
+  margin: 20px 0;
+  color: black;
+}
+
+.vide_sidebar {
+  margin: 20px 0;
+}
+
+.vide_sidebar a {
+  width: 40%;
+  height: 100px;
+}
+
+.vide_sidebar a img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.vide_sidebar .details {
+  width: 60%;
+  margin-left: 10px;
+  color: #fff;
+}
+
+.vide_sidebar .details p {
+  font-size: 13px;
+  margin: 0;
+}
