@@ -107,25 +107,31 @@
                                 </ul>
                                 <div class="tab-content" id="pills-tabContent">
                                     <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="pills-login-tab">
-                                        <div class="form px-4 pt-5">
-                                            <input type="text" name="" class="form-control" placeholder="email@site.com.br">
-                                            <input type="password" name="" class="form-control" placeholder="Digite sua senha aqui">
-                                            <button class="btn btn-dark btn-block">Login</button>
-                                        </div>
+                                        <form method="POST" action="">
+                                            <div class="form px-4 pt-5"> 
+                                                <input type="text" name="" class="form-control" placeholder="email@site.com.br">
+                                                <input type="password" name="" class="form-control" placeholder="Digite sua senha aqui">
+                                                <button class="btn btn-dark btn-block">Login</button>
+                                            </div>
+                                        </form>    
                                     </div>
                                     <div class="tab-pane fade" id="pills-registrar" role="tabpanel" aria-labelledby="pills-registrar-tab">
-                                        <div class="form px-4">
-                                            <input type="text" name="" class="form-control" placeholder="Digite seu nome completo aqui">
-                                            <input type="text" name="" class="form-control" placeholder="email@site.com.br">
-                                            <input type="text" name="" class="form-control" placeholder="Digite sua senha aqui">
-                                            <button class="btn btn-dark btn-block">Registrar</button>
-                                        </div>
+                                        <form method="POST" action="registrar.php">
+                                            <div class="form px-4">
+                                                <input type="text" name="" class="form-control" placeholder="Digite seu nome completo aqui">
+                                                <input type="text" name="" class="form-control" placeholder="email@site.com.br">
+                                                <input type="text" name="" class="form-control" placeholder="Digite sua senha aqui">
+                                                <button class="btn btn-dark btn-block">Registrar</button>
+                                            </div>
+                                        </form>    
                                     </div>
                                     <div class="tab-pane fade" id="pills-recuperar" role="tabpanel" aria-labelledby="pills-recuperar-tab">
-                                        <div class="form px-4 pt-5">
-                                            <input type="text" name="" class="form-control" placeholder="email@site.com.br">
-                                            <button class="btn btn-dark btn-block">Recuperar Senha</button>
-                                        </div>
+                                        <form method="POST" action="recuperar.php">
+                                            <div class="form px-4 pt-5">
+                                                <input type="text" name="" class="form-control" placeholder="email@site.com.br">
+                                                <button class="btn btn-dark btn-block">Recuperar Senha</button>
+                                            </div>
+                                        </form>    
                                     </div>               
                                 </div>
                             </div>    
