@@ -38,9 +38,9 @@ class CategoriaCrud
 
             foreach($data as $item) 
             {
-                $u = new Usuario();
-                $u->setId($item['idcat']);
-                $u->setNome($item['nomecat']);
+                $u = new Categoria();
+                $u->setIdCat($item['idcat']);
+                $u->setNomeCat($item['nomecat']);
 
                 $array[] = $u;
             }
@@ -82,6 +82,7 @@ class CategoriaCrud
         require_once 'dados.php';
          
         $conecta = new Sistema();
+        $c = new Categoria();
         $link = $conecta->conectado();
 
         $sql = $link->prepare("UPDATE categoria SET nomecat = :nome WHERE idcat = :id");
@@ -110,7 +111,7 @@ class CategoriaCrud
 class LogsCrud 
 {
 
-    public function addlog(Usuario $u, $ip, $acao) 
+    public function addlog($usuario, $ip, $acao) 
     {
 
         require_once 'dados.php';
@@ -119,7 +120,7 @@ class LogsCrud
         $link = $conecta->conectado();
 
         $sql = $link->prepare("INSERT INTO logs (usuario, ip, acao, dataacao) VALUES (:usuario, :ip, :acao, now())");
-        $sql->bindValue(':usuario', $u->getNome());
+        $sql->bindValue(':usuario', $usuario);
         $sql->bindValue(':ip', $ip);
         $sql->bindValue(':acao', $acao);
         $sql->execute();
@@ -209,6 +210,7 @@ class NiveisCrud
         require_once 'dados.php';
          
         $conecta = new Sistema();
+        $n = new Nivel();
         $link = $conecta->conectado();
 
         $sql = $link->prepare("INSERT INTO nivel (nomenivel) VALUES (:nome)");
@@ -227,6 +229,7 @@ class NiveisCrud
          
 
         $conecta = new Sistema();
+        $n = new Nivel();
         $link = $conecta->conectado();
 
         $array = [];
@@ -316,6 +319,7 @@ class SituacoesCrud
         require_once 'dados.php';
          
         $conecta = new Sistema();
+        $s = new Situacao();
         $link = $conecta->conectado();
 
         $sql = $link->prepare("INSERT INTO situacao (nomesit) VALUES (:nome)");
@@ -345,8 +349,8 @@ class SituacoesCrud
             foreach($data as $item) 
             {
                 $s = new Situacao();
-                $s->setId($item['idsit']);
-                $s->setNome($item['nomesit']);
+                $s->setIdSit($item['idsit']);
+                $s->setSituacao($item['nomesit']);
 
                 $array[] = $s;
             }
@@ -655,7 +659,7 @@ class PostsCrud
 class UsuariosCrud 
 {
 
-    public function add(Usuario $u, Situacao $s, Nivel $n) 
+    public function add(Usuario $u) 
     {
 
         require_once 'dados.php';
@@ -663,15 +667,12 @@ class UsuariosCrud
         $conecta = new Sistema();
         $link = $conecta->conectado();
 
-        $sql = $link->prepare("INSERT INTO usuario (nomeuser, emailuser, senha, situacaouser, idnivel) VALUES (:nome, :email, :senhauser, :situser, :niveluser)");
-        $sql->bindValue(':nomeuser', $u->getNomeUser());
-        $sql->bindValue(':emailuser', $u->getEmailUser());
-        $sql->bindValue(':senhauser', $u->getSenhaUser());
-        $sql->bindValue(':situser', $s->getIdSit());
-        $sql->bindValue(':niveluser', $n->getIdNivel());
+        $sql = $link->prepare("INSERT INTO usuario (nome, email) VALUES (:nome, :email)");
+        $sql->bindValue(':nome', $u->getNomeUser());
+        $sql->bindValue(':email', $u->getEmailUser());
         $sql->execute();
 
-        $u->getIdUser( $link->lastInsertId() );
+        $u->setIdUser( $link->lastInsertId() );
         return $u;
     }
 
@@ -694,12 +695,9 @@ class UsuariosCrud
             foreach($data as $item) 
             {
                 $u = new Usuario();
-                $u->setIdUser($item['idusuario']);
-                $u->setNomeUser($item['nomeuser']);
-                $u->setEmailUser($item['emailuser']);
-                $u->setSenhaUser($item['senha']);
-                $u->setIdSitUser($item['situacaouser']);
-                $u->setIdNivelUser($item['idnivel']);
+                $u->setIdUser($item['id']);
+                $u->setNomeUser($item['nome']);
+                $u->setEmailUser($item['email']);
 
                 $array[] = $u;
             }
@@ -716,7 +714,7 @@ class UsuariosCrud
         $conecta = new Sistema();
         $link = $conecta->conectado();
 
-        $sql = $link->prepare("SELECT * FROM usuario WHERE emailuser = :email");
+        $sql = $link->prepare("SELECT * FROM usuario WHERE email = :email");
         $sql->bindValue(':email', $email);
         $sql->execute();
         if($sql->rowCount() > 0) 
@@ -724,12 +722,9 @@ class UsuariosCrud
             $data = $sql->fetch();
 
             $u = new Usuario();
-            $u->setIdUser($data['idusuario']);
-            $u->setNomeUser($data['nomeuser']);
-            $u->setEmailUser($data['emailuser']);
-            $u->setSenhaUser($data['senha']);
-            $u->setIdSitUser($data['situacaouser']);
-            $u->setIdNivelUser($data['idnivel']);
+            $u->setIdUser($data['id']);
+            $u->setNomeUser($data['nome']);
+            $u->setEmailUser($data['email']);
 
             return $u;
         } 
@@ -747,7 +742,7 @@ class UsuariosCrud
         $conecta = new Sistema();
         $link = $conecta->conectado();
 
-        $sql = $link->prepare("SELECT * FROM usuario WHERE idusuario = :id");
+        $sql = $link->prepare("SELECT * FROM usuario WHERE id = :id");
         $sql->bindValue(':id', $id);
         $sql->execute();
         if($sql->rowCount() > 0) 
@@ -755,12 +750,9 @@ class UsuariosCrud
             $data = $sql->fetch();
 
             $u = new Usuario();
-            $u->setIdUser($data['idusuario']);
-            $u->setNomeUser($data['nomeuser']);
-            $u->setEmailUser($data['emailuser']);
-            $u->setSenhaUser($data['senha']);
-            $u->setIdSitUser($data['situacaouser']);
-            $u->setIdNivelUser($data['idnivel']);
+            $u->setIdUser($data['id']);
+            $u->setNomeUser($data['nome']);
+            $u->setEmailUser($data['email']);
 
             return $u;
         } 
@@ -778,12 +770,9 @@ class UsuariosCrud
         $conecta = new Sistema();
         $link = $conecta->conectado();
 
-        $sql = $link->prepare("UPDATE usuario SET nomeuser = :nomeuser, emailuser = :emailuser, senha = :senhauser, situacaouser = :situser, idnivel = :idnvl WHERE idusuario = :id");
-        $sql->bindValue(':nomeuser', $u->getNomeUser());
-        $sql->bindValue(':emailuser', $u->getEmailUser());
-        $sql->bindValue(':senhauser', $u->getSenhaUser());
-        $sql->bindValue(':situser', $u->getIdSitUser());
-        $sql->bindValue(':idnvl', $u->getIdNivelUser());
+        $sql = $link->prepare("UPDATE usuario SET nome = :nome, email = :email WHERE id = :id");
+        $sql->bindValue(':nome', $u->getNomeUser());
+        $sql->bindValue(':email', $u->getEmailUser());
         $sql->bindValue(':id', $u->getIdUser());
         $sql->execute();
 
@@ -798,7 +787,7 @@ class UsuariosCrud
         $conecta = new Sistema();
         $link = $conecta->conectado();
 
-        $sql = $link->prepare("DELETE FROM usuario WHERE idusuario = :id");
+        $sql = $link->prepare("DELETE FROM usuario WHERE id = :id");
         $sql->bindValue(':id', $id);
         $sql->execute();
     }
