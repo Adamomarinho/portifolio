@@ -1,7 +1,7 @@
 <?php
 
 define($host, 'localhost');
-define($pasta, '/modelo-html/api/');
+define($pasta, '/blogbd/classes/');
 
 class Sistema
 {
@@ -9,7 +9,7 @@ class Sistema
     {
         
         $host = 'localhost';
-        $bd = 'blogapi';
+        $bd = 'blogbd';
         $usuario = 'root';
         $senha = '123456';
         $carac = 'utf8';
