@@ -1,29 +1,26 @@
 <?php
 
 require '../vendor/autoload.php';
-require_once '../classes/dados.php';
 
 use Dompdf\Options;
 use Dompdf\Dompdf;
 
-class GerarPdf
+class Pdf
 {
 
-    public function GerarPdfUsuario($id)
+    public function GerarPdfNiveis()
     {
         //INICIALIZAR A CLASSE DO DOMPDF
-        $urladmin = 'blogapi/admin/';
-        $funcao = 'usuario/';
-        $link = $urladmin.$funcao;
         $options = new Options();
         $options->set('isRemoteEnabled', true);
         $pdf = new DOMPDF($options);
         //DEFINE ALGUMAS VARIAVEIS PARA APOIAR A GERAÇÃO DAS INFORMAÇÕES DA NOTIFICACAO
-        $tipo = 'usuario-';
+        $tipo = 'Pdf-Niveis';
         $extensao = '.pdf';
-        $arquivo = $tipo.$id.$extensao;
+        $arquivo = $tipo.$extensao;
+        $urladminivel = 'gerenciar.php';
         //ALIMENTAR OS DADOS DO PDF
-        $html = utf8_encode(file_get_contents($link."relatoriouser.php?id=".$id));
+        $html = utf8_encode(file_get_contents($urladminivel));
         //Definir o tamanho do papel e orientação da página
         $pdf->set_paper('A4', 'portrait');
         //CARREGAR O CONTEÚDO HTML
@@ -34,21 +31,37 @@ class GerarPdf
         $pdf->stream($arquivo, array("Attachment" => true));
     }
 
-    public function GerarPdfPost($id)
+        function GerarPdf($nomepdf,$fonte_dados)
     {
         //INICIALIZAR A CLASSE DO DOMPDF
-        $urladmin = 'blogapi/admin/';
-        $funcao = 'posts/';
-        $link = $urladmin.$funcao;
         $options = new Options();
         $options->set('isRemoteEnabled', true);
         $pdf = new DOMPDF($options);
         //DEFINE ALGUMAS VARIAVEIS PARA APOIAR A GERAÇÃO DAS INFORMAÇÕES DA NOTIFICACAO
-        $tipo = 'post-';
+        //ALIMENTAR OS DADOS DO PDF
+        $html = utf8_encode(file_get_contents($fonte_dados));
+        //Definir o tamanho do papel e orientação da página
+        $pdf->set_paper('A4', 'portrait');
+        //CARREGAR O CONTEÚDO HTML
+        $pdf->load_html(utf8_decode($html));
+        //RENDERIZAR O PDF
+        $pdf->render();
+        //NOMEAR O PDF GERADO
+        $pdf->stream($nome_arquivo, array("Attachment" => false));
+    }
+
+    public function GerarAdvertenciaArea($id)
+    {
+        //INICIALIZAR A CLASSE DO DOMPDF
+        $options = new Options();
+        $options->set('isRemoteEnabled', true);
+        $pdf = new DOMPDF($options);
+        //DEFINE ALGUMAS VARIAVEIS PARA APOIAR A GERAÇÃO DAS INFORMAÇÕES DA NOTIFICACAO
+        $tipo = 'Advertencia-';
         $extensao = '.pdf';
         $arquivo = $tipo.$id.$extensao;
         //ALIMENTAR OS DADOS DO PDF
-        $html = utf8_encode(file_get_contents($link."relatorioposts.php?id=".$id));
+        $html = utf8_encode(file_get_contents(urlarea."adverte.php?idans=".$id));
         //Definir o tamanho do papel e orientação da página
         $pdf->set_paper('A4', 'portrait');
         //CARREGAR O CONTEÚDO HTML
@@ -59,21 +72,18 @@ class GerarPdf
         $pdf->stream($arquivo, array("Attachment" => true));
     }
 
-    public function GerarPdfPermissao($id)
+    public function GerarMultaArea($id)
     {
         //INICIALIZAR A CLASSE DO DOMPDF
-        $urladmin = 'blogapi/admin/';
-        $funcao = 'permissao/';
-        $link = $urladmin.$funcao;
         $options = new Options();
         $options->set('isRemoteEnabled', true);
         $pdf = new DOMPDF($options);
         //DEFINE ALGUMAS VARIAVEIS PARA APOIAR A GERAÇÃO DAS INFORMAÇÕES DA NOTIFICACAO
-        $tipo = 'permissao-';
+        $tipo = 'Multa-';
         $extensao = '.pdf';
         $arquivo = $tipo.$id.$extensao;
         //ALIMENTAR OS DADOS DO PDF
-        $html = utf8_encode(file_get_contents($link."relatoriopermissao.php?id=".$id));
+        $html = utf8_encode(file_get_contents(urlarea."monta-multa.php?idans=".$id));
         //Definir o tamanho do papel e orientação da página
         $pdf->set_paper('A4', 'portrait');
         //CARREGAR O CONTEÚDO HTML
@@ -84,21 +94,18 @@ class GerarPdf
         $pdf->stream($arquivo, array("Attachment" => true));
     }
 
-    public function GerarPdfSituacao($id)
+    public function GerarNotificacaoAdmin($id)
     {
         //INICIALIZAR A CLASSE DO DOMPDF
-        $urladmin = 'blogapi/admin/';
-        $funcao = 'situacao/';
-        $link = $urladmin.$funcao;
         $options = new Options();
         $options->set('isRemoteEnabled', true);
         $pdf = new DOMPDF($options);
         //DEFINE ALGUMAS VARIAVEIS PARA APOIAR A GERAÇÃO DAS INFORMAÇÕES DA NOTIFICACAO
-        $tipo = 'situacao-';
+        $tipo = 'Notificacao-';
         $extensao = '.pdf';
         $arquivo = $tipo.$id.$extensao;
         //ALIMENTAR OS DADOS DO PDF
-        $html = utf8_encode(file_get_contents($link."relatoriosituacao.php?id=".$id));
+        $html = utf8_encode(file_get_contents(urladmin."notificacao.php?id=".$id));
         //Definir o tamanho do papel e orientação da página
         $pdf->set_paper('A4', 'portrait');
         //CARREGAR O CONTEÚDO HTML
@@ -109,21 +116,18 @@ class GerarPdf
         $pdf->stream($arquivo, array("Attachment" => true));
     }
 
-    public function GerarPdfNivel($id)
+    public function GerarAdvertenciaAdmin($id)
     {
         //INICIALIZAR A CLASSE DO DOMPDF
-        $urladmin = 'blogapi/admin/';
-        $funcao = 'nivel/';
-        $link = $urladmin.$funcao;
         $options = new Options();
         $options->set('isRemoteEnabled', true);
         $pdf = new DOMPDF($options);
         //DEFINE ALGUMAS VARIAVEIS PARA APOIAR A GERAÇÃO DAS INFORMAÇÕES DA NOTIFICACAO
-        $tipo = 'nivel-';
+        $tipo = 'Advertencia-';
         $extensao = '.pdf';
         $arquivo = $tipo.$id.$extensao;
         //ALIMENTAR OS DADOS DO PDF
-        $html = utf8_encode(file_get_contents($link."relatorionivel.php?id=".$id));
+        $html = utf8_encode(file_get_contents(urladmin."adverte.php?idans=".$id));
         //Definir o tamanho do papel e orientação da página
         $pdf->set_paper('A4', 'portrait');
         //CARREGAR O CONTEÚDO HTML
@@ -134,46 +138,18 @@ class GerarPdf
         $pdf->stream($arquivo, array("Attachment" => true));
     }
 
-    public function GerarPdfLog($id)
+    public function GerarMultaAdmin($id)
     {
         //INICIALIZAR A CLASSE DO DOMPDF
-        $urladmin = 'blogapi/admin/';
-        $funcao = 'logs/';
-        $link = $urladmin.$funcao;
         $options = new Options();
         $options->set('isRemoteEnabled', true);
         $pdf = new DOMPDF($options);
         //DEFINE ALGUMAS VARIAVEIS PARA APOIAR A GERAÇÃO DAS INFORMAÇÕES DA NOTIFICACAO
-        $tipo = 'log-';
+        $tipo = 'Multa-';
         $extensao = '.pdf';
         $arquivo = $tipo.$id.$extensao;
         //ALIMENTAR OS DADOS DO PDF
-        $html = utf8_encode(file_get_contents($link."relatoriouser.php?id=".$id));
-        //Definir o tamanho do papel e orientação da página
-        $pdf->set_paper('A4', 'portrait');
-        //CARREGAR O CONTEÚDO HTML
-        $pdf->load_html(utf8_decode($html));
-        //RENDERIZAR O PDF
-        $pdf->render();
-        //NOMEAR O PDF GERADO
-        $pdf->stream($arquivo, array("Attachment" => true));
-    }
-
-    public function GerarPdfCategoria($id)
-    {
-        //INICIALIZAR A CLASSE DO DOMPDF
-        $urladmin = 'blogapi/admin/';
-        $funcao = 'categoria/';
-        $link = $urladmin.$funcao;
-        $options = new Options();
-        $options->set('isRemoteEnabled', true);
-        $pdf = new DOMPDF($options);
-        //DEFINE ALGUMAS VARIAVEIS PARA APOIAR A GERAÇÃO DAS INFORMAÇÕES DA NOTIFICACAO
-        $tipo = 'categoria-';
-        $extensao = '.pdf';
-        $arquivo = $tipo.$id.$extensao;
-        //ALIMENTAR OS DADOS DO PDF
-        $html = utf8_encode(file_get_contents($link."relatoriocategoria.php?id=".$id));
+        $html = utf8_encode(file_get_contents(urladmin."monta-multa.php?idans=".$id));
         //Definir o tamanho do papel e orientação da página
         $pdf->set_paper('A4', 'portrait');
         //CARREGAR O CONTEÚDO HTML

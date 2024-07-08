@@ -1,7 +1,9 @@
 <?php
 
 define($host, 'localhost');
-define($pasta, '/blogbd/classes/');
+define($pasta, '/blogapi/classes/');
+session_start();
+ob_start();
 
 class Sistema
 {
@@ -9,7 +11,7 @@ class Sistema
     {
         
         $host = 'localhost';
-        $bd = 'blogbd';
+        $bd = 'blogapi';
         $usuario = 'root';
         $senha = '123456';
         $carac = 'utf8';
@@ -72,13 +74,12 @@ function pegaurl()
         echo "Página não encontrada";
     }
 }
-
-function mostra_tabela_dados()
+function mostra_dados_tabela($tabela)
 {
     $link = new Sistema();
     $linka = $link->conectado();
     $linka->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $sql = "SELECT * FROM dados";
+    $sql = "SELECT * FROM " . $tabela;
     $sql = $linka->prepare($sql);
     $sql->execute();
     $dados = $sql->fetchAll(PDO::FETCH_ASSOC);

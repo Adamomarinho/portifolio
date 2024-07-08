@@ -6,7 +6,7 @@ class Relatorios
     public function RelatorioPosts($nome_usuario) 
     {
 
-        require_once 'dados.php';
+        require_once 'classes.php';
 
         $conecta = new Sistema();
         $link = $conecta->conectado();
@@ -67,7 +67,7 @@ class Relatorios
     public function RelatorioUsuarios($nome_usuario) 
     {
 
-        require_once 'dados.php';
+        require_once 'classes.php';
 
         $conecta = new Sistema();
         $link = $conecta->conectado();
@@ -126,7 +126,7 @@ class Relatorios
     public function RelatorioPermissoes($nome_usuario) 
     {
 
-        require_once 'dados.php';
+        require_once 'classes.php';
 
         $conecta = new Sistema();
         $link = $conecta->conectado();
@@ -183,7 +183,7 @@ class Relatorios
     public function RelatorioLogs($nome_usuario) 
     {
 
-        require_once 'dados.php';
+        require_once 'classes.php';
 
         $conecta = new Sistema();
         $link = $conecta->conectado();
@@ -237,21 +237,21 @@ class Relatorios
 
     }
 
-    public function RelatorioNiveis($nome_usuario) 
+    public function RelatorioNiveis()
     {
 
-        require_once 'dados.php';
+        require_once 'classes.php';
 
         $conecta = new Sistema();
         $link = $conecta->conectado();
 
 		// Definimos o nome do arquivo que será exportado
-        $arquivo = 'Relatorio-nivel-' . $nome_usuario . '.xls';
+        $arquivo = 'Relatorio-niveis.xls';
 		// Criamos uma tabela HTML com o formato da planilha
 		$html = '';
 		$html .= '<table border="1">';
 		$html .= '<tr>';
-		$html .= '<td colspan="2" style="text-align:center;"><b>Relatorio de Equipes do Usuario - ' . $nome_usuario . '</b></td>';
+		$html .= '<td colspan="2" style="text-align:center;"><b>Relatorio de Equipes</b></td>';
 		$html .= '</tr>';
 		
 		$html .= '<tr>';
@@ -266,12 +266,12 @@ class Relatorios
 
         $result_nvl = $link->query($query_nvl);
 		
-		while($nvl = $result_nvl->fetch(PDO::FETCH_ASSOC)){
+		while($nvl = $result_nvl->fetch(PDO::FETCH_ASSOC))
+		{
 			$html .= '<tr>';
 			$html .= '<td>'.$nvl['idnivel'].'</td>';
             $html .= '<td>'.$nvl['nomenivel'].'</td>';
 			$html .= '</tr>';
-
 		}
 
 		// Configurações header para forçar o download
@@ -291,7 +291,7 @@ class Relatorios
     public function RelatorioSituacao($nome_usuario) 
     {
 
-        require_once 'dados.php';
+        require_once 'classes.php';
 
         $conecta = new Sistema();
         $link = $conecta->conectado();
@@ -342,7 +342,7 @@ class Relatorios
     public function RelatorioCategorias($nome_usuario) 
     {
 
-        require_once 'dados.php';
+        require_once 'classes.php';
 
         $conecta = new Sistema();
         $link = $conecta->conectado();
