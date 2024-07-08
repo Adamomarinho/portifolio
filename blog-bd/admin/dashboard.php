@@ -1,21 +1,24 @@
 <?php
+
 session_start();
 ob_start();
-include '../classes/classe.php';
 
-$link = new Sistema();
-$linka = $link->conectado();
-$linka->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+//include '../classes/classe.php';
+include '../classes/login.php';
 
-//var_dump($_SESSION);
+$sair = '../blog.php';
+$logado = new Login();
+$logado->VerificaUsuario();
+$nomeusuario = $logado->PegaDadosSessao('nomeuser');
 
+/*
 if((!isset($_SESSION['id'])) AND (!isset($_SESSION['nome'])))
 {
     $_SESSION['msg'] = msg('danger','Erro: Necessário realizar o login para acessar a página!');
     $destino = '../blog.php';
     redireciona(3, $destino);
-    //header("Location: index.php");
 }
+*/
 
 ?>
 
@@ -60,7 +63,7 @@ if((!isset($_SESSION['id'])) AND (!isset($_SESSION['nome'])))
   <div class="navbar-nav">
     <div class="nav-item text-nowrap">
       <a class="nav-link px-3" href="sair.php">Deslogar-se</a>
-    </div>
+    </div> 
   </div>
 </header>
 <body>
@@ -126,7 +129,7 @@ if((!isset($_SESSION['id'])) AND (!isset($_SESSION['nome'])))
     <div class="container-fluid">
       <div class="card text-center">
         <div class="card-header" style="width: 100%;">
-              <b>Bem Vindo Usuario: </b><?php echo $_SESSION['nome']; ?>       </div>
+              <b>Bem Vindo Usuario: </b><?php echo $nomeusuario; ?>       </div>
         <div class="card-body">
           <div class="row">
             <br>
@@ -134,7 +137,7 @@ if((!isset($_SESSION['id'])) AND (!isset($_SESSION['nome'])))
               <br>
                   <div class="row g-0 fluid">
                       <div class="col-md-2" style="height: 10%;">
-                          <a href="ans/gerenciar-ans.php">
+                          <a href="#">
                               <button class="btn btn-primary btn-icon">
                                 <i class="fa fa-window-restore fa-3x fa-fw"></i>
                               </button>
@@ -144,15 +147,15 @@ if((!isset($_SESSION['id'])) AND (!isset($_SESSION['nome'])))
                           <div class="card-body">
                               <h5 class="card-title text-center" style="margin-top: -10%;">
                                   <b>
-                                  <a href="ans/gerenciar-ans.php" style="text-decoration: none;">116</a>                                  </b>
+                                  <a href="#" style="text-decoration: none;">116</a>                                  </b>
                               </h5>
                               <p class="card-text">
-                              <a href="ans/gerenciar-ans.php" style="text-decoration: none;">POSTS</a>
+                              <a href="#" style="text-decoration: none;">POSTS</a>
                               </p>
                           </div>
                       </div>
                       <div class="col-md-2" style="height: 10%;margin-left: -3%;">
-                          <a href="contratos/gerenciar-contratos.php">
+                          <a href="#">
                               <button class="btn btn-warning btn-icon">
                                 <i class="fa fa-archive fa-3x fa-fw"></i>
                               </button>
@@ -162,15 +165,15 @@ if((!isset($_SESSION['id'])) AND (!isset($_SESSION['nome'])))
                           <div class="card-body">
                               <h5 class="card-title text-center" style="margin-top: -10%;">
                                   <b>
-                                  <a href="contratos/gerenciar-contratos.php" style="text-decoration: none;">2</a>                                  </b>
+                                  <a href="#" style="text-decoration: none;">2</a>                                  </b>
                               </h5>
                               <p class="card-text">
-                              <a href="contratos/gerenciar-contratos.php" style="text-decoration: none;">CATEGORIAS</a>
+                              <a href="#" style="text-decoration: none;">CATEGORIAS</a>
                               </p>
                           </div>
                       </div>
                       <div class="col-md-2" style="height: 10%;margin-left: -3%;">
-                          <a href="dashboards/gerenciar-dashboards.php">
+                          <a href="#">
                               <button class="btn btn-danger btn-icon">
                               <i class="fas fa-cogs fa-3x fa-fw"></i>
                               </button>
@@ -180,10 +183,10 @@ if((!isset($_SESSION['id'])) AND (!isset($_SESSION['nome'])))
                           <div class="card-body">
                               <h5 class="card-title text-center" style="margin-top: -10%;">
                                   <b>
-                                  <a href="dashboards/gerenciar-dashboards.php" style="text-decoration: none;">3</a>                                  </b>
+                                  <a href="#" style="text-decoration: none;">3</a>                                  </b>
                               </h5>
                               <p class="card-text">
-                              <a href="dashboards/gerenciar-dashboards.php" style="text-decoration: none;">PERMISSOES</a>
+                              <a href="#" style="text-decoration: none;">PERMISSOES</a>
                               </p>
                           </div>
                       </div>
@@ -248,7 +251,7 @@ if((!isset($_SESSION['id'])) AND (!isset($_SESSION['nome'])))
                           </div>
                       </div>
                       <div class="col-md-2" style="height: 10%;margin-left: -4%;">
-                          <a href="usuarios/logs/gerenciar-logs.php">
+                          <a href="#">
                               <button class="btn btn-secondary btn-icon">
                                 <i class="fa fa-tasks fa-3x fa-fw"></i>
                               </button>
