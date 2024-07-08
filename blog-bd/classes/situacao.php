@@ -2,7 +2,7 @@
 
 require_once 'classe.php';
 
-class SituacaolCrud
+class SituacaoCrud
 {
 	function SalvarSituacao($nome)
 	{
@@ -51,7 +51,7 @@ class SituacaolCrud
             }
             else
             {
-              msg('danger','Falha ao atualizar Situacaol!');
+              msg('danger','Falha ao atualizar Situacao!');
               redireciona(3, 'gerenciar.php');
             }
             //return true;
@@ -74,12 +74,12 @@ class SituacaolCrud
 		$sql->execute();
         if ($sql->rowCount())
         {
-            msg('success', 'Situacaol excluido com sucesso!');
+            msg('success', 'Situacao excluido com sucesso!');
             redireciona(3, $destino);
         }
         else
         {
-            msg('danger', 'Não foi possivel remover o Situacaol');
+            msg('danger', 'Não foi possivel remover o Situacao');
             redireciona(3, $destino);
         }
 		//return true;
