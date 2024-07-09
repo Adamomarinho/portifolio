@@ -6,13 +6,16 @@ ob_start();
 require '../../classes/classe.php';
 require '../sessao.php';
 require '../../classes/usuario.php';
+require '../../classes/nivel.php';
+require '../../classes/situacao.php';
 
 $verifica = new VerificaUser();
 $verifica->SessaoUsuario('../../blog.php');
 
 $id = $_GET['id'];
 $user = new UsuarioCrud();
-
+$sit = new SituacaoCrud();
+$nvl = new NivelCrud();
 
 $iduser = $user->PegaDadosUsuario($id, 'idusuario');
 $nomeuser = $user->PegaDadosUsuario($id, 'nomeuser');
@@ -20,7 +23,8 @@ $emailuser = $user->PegaDadosUsuario($id, 'emailuser');
 $senha = $user->PegaDadosUsuario($id, 'senha');
 $idsit = $user->PegaDadosUsuario($id, 'situacaouser');
 $idnivel = $user->PegaDadosUsuario($id, 'idnivel');
-
+$situacao = $sit->PegaDadosSituacao($idsit,'nomesit');
+$nivel = $nvl->PegaDadosNivel($idnivel,'nomenivel');
 
 ?>
 <!doctype html>
@@ -32,6 +36,7 @@ $idnivel = $user->PegaDadosUsuario($id, 'idnivel');
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"/>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../vendor/select2/select2/dist/css/select2.min.css">
     <meta name="theme-color" content="#7952b3">
   </head>
   <style>
@@ -140,10 +145,11 @@ $idnivel = $user->PegaDadosUsuario($id, 'idnivel');
                             <label for="nome">Senha</label>
                             <input type="password" class="form-control" name="senhauser" value="<?php echo $senha; ?>">
                         </div>
+                        <br>
                         <div class="form-group text-center">
                             <label for="nome">Situacao</label>
-                            <select class="form-control" name="idsituacao" required>
-                                  <option value="" selected>Selecione a Situacao</option>
+                            <select class="form-control select2 text-center" name="idsituacao" required>
+                                  <option value="<?php echo $idsit; ?>" selected><?php echo $idsit . " - " . $situacao; ?></option>
                                       <?php
                                             $conecta = new Sistema();
                                             $link = $conecta->conectado();
@@ -152,16 +158,17 @@ $idnivel = $user->PegaDadosUsuario($id, 'idnivel');
                                             while($sit= $resultsit->fetch(PDO::FETCH_ASSOC))
                                               {
                                         ?>
-                                    <option value="<?php echo $sit['idsit']; ?>"><?php echo $sit['nomesit']; ?></option>
+                                    <option value="<?php echo $sit['idsit']; ?>"><?php echo $sit['idsit'] . " - " . $sit['nomesit']; ?></option>
                                         <?php
                                               }
                                         ?>
 								  	        </select>
                         </div>
+                        <br>
                         <div class="form-group text-center">
                             <label for="nome">Nivel</label>
-                            <select class="form-control" name="idnivel" required>
-                                  <option value=""  selected hidden>Selecione o Nivel</option>
+                            <select class="form-control select2 text-center" name="idnivel" required>
+                                  <option value="<?php echo $idnivel; ?>"  selected hidden><?php echo $idnivel . " - " . $nivel; ?></option>
                                       <?php
                                             $conecta = new Sistema();
                                             $link = $conecta->conectado();
@@ -170,7 +177,7 @@ $idnivel = $user->PegaDadosUsuario($id, 'idnivel');
                                             while($nvl= $resultnvl->fetch(PDO::FETCH_ASSOC))
                                               {
                                         ?>
-                                    <option value="<?php echo $nvl['idnivel']; ?>"><?php echo $nvl['nomenivel']; ?></option>
+                                    <option value="<?php echo $nvl['idnivel']; ?>"><?php echo $nvl['idnivel'] . " - " . $nvl['nomenivel']; ?></option>
                                         <?php
                                               }
                                         ?>
@@ -183,7 +190,7 @@ $idnivel = $user->PegaDadosUsuario($id, 'idnivel');
                     </form>
                 </div>
                 <div class="card-footer text-muted text-center">
-                    Digite o nome do nivel e clique no botão Salvar
+                    Digite as informações necessarias para poder alterar os dados do usuario
                 </div>
             </div>
             <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>    
@@ -193,5 +200,12 @@ $idnivel = $user->PegaDadosUsuario($id, 'idnivel');
   </div>
 </div>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="../../vendor/select2/select2/dist/js/select2.full.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() 
+        {
+            $('.select2').select2();
+        } );
+    </script>
   </body>
 </html>
