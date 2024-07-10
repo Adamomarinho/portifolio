@@ -174,7 +174,7 @@ $usuario = $user->PegaDadosUsuario($iduser, 'nomeuser');
                                       <?php
                                             $conecta = new Sistema();
                                             $link = $conecta->conectado();
-                                            $queryuser= "SELECT * from usuario order by idusuario asc"; 
+                                            $queryuser= "SELECT * from usuario where situacaouser = 1 order by idusuario asc"; 
                                             $resultuser = $link->query($queryuser);
                                             while($user= $resultuser->fetch(PDO::FETCH_ASSOC))
                                               {
