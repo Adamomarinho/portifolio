@@ -15,7 +15,7 @@ $verifica->SessaoUsuario('../../blog.php');
   <head>
   <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Gerenciar Usuarios</title>
+    <title>Gerenciar Niveis de Usuarios</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"/>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
@@ -71,6 +71,12 @@ $verifica->SessaoUsuario('../../blog.php');
             </a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="../permissoes/gerenciar.php">
+            <i class="fa fa-fw fa-users"></i>&nbsp;&nbsp;
+              Permissões de usuários
+            </a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="../situacoes/gerenciar.php">
             <i class="fa fa-fw fa-handshake"></i>&nbsp;&nbsp;
               Situação dos Usuários
@@ -89,7 +95,7 @@ $verifica->SessaoUsuario('../../blog.php');
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../logs/gerenciar.php">
+            <a class="nav-link" href="#">
             <i class="fa fa-fw fa-bars"></i>&nbsp;&nbsp;
                 Logs
             </a>
@@ -106,7 +112,7 @@ $verifica->SessaoUsuario('../../blog.php');
                 <a href="gerapdf.php" class="btn btn-danger" role="button" style="text-decoration: none;"><i class="fa fa-file-pdf fa fa-fw"></i>&nbsp;&nbsp;Relatorio PDF</a>
             </div>
                 <br>
-                    <table id="tabela" class="table table-striped" style="width:100%">
+                    <table id="tabela" class="table table-hover" style="width:100%">
                         <thead>
                             <tr>
                                 <th class="text-center">ID</th>
@@ -136,8 +142,27 @@ $verifica->SessaoUsuario('../../blog.php');
                             $situacao = $mostra["situacao"];
                             $nivel = $mostra["nivel"];
 
+                            if($situacao == 'Ativo')
+                            {
+                              $color="table-light";
+                            }
+                            else
+                            {
+                              if($situacao == 'Inativo')
+                              {
+                                $color="table-danger";
+                              }
+                              else
+                              {
+                                if($situacao == 'Processando')
+                                {
+                                  $color="table-info";
+                                }
+                              }
+                            }
+
                         ?>
-                            <tr>
+                            <tr class="<?php echo $color; ?>">
                                 <td class="text-center"><?php echo $iduser; ?></td>
                                 <td class="text-center"><?php echo $nomeuser; ?></td>
                                 <td class="text-center"><?php echo $emailuser; ?></td>
