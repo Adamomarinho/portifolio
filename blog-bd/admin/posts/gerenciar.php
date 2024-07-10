@@ -112,7 +112,7 @@ $verifica->SessaoUsuario('../../blog.php');
                 <a href="gerapdf.php" class="btn btn-danger" role="button" style="text-decoration: none;"><i class="fa fa-file-pdf fa fa-fw"></i>&nbsp;&nbsp;Relatorio PDF</a>
             </div>
                 <br>
-                    <table id="tabela" class="table table-striped" style="width:100%">
+                    <table id="tabela" class="table table-hover" style="width:100%">
                         <thead>
                             <tr>
                                 <th class="text-center">ID</th>
@@ -144,8 +144,27 @@ left join categoria as c on p.categoria = c.idcat";
                             $categoria = $mostra["categoria"];
                             $usuario = $mostra["usuario"];
 
+                            if($situacao == 'Ativo')
+                            {
+                              $color="table-light";
+                            }
+                            else
+                            {
+                              if($situacao == 'Inativo')
+                              {
+                                $color="table-danger";
+                              }
+                              else
+                              {
+                                if($situacao == 'Processando')
+                                {
+                                  $color="table-info";
+                                }
+                              }
+                            }
+
                         ?>
-                            <tr>
+                            <tr class="<?php echo $color; ?>">
                                 <td class="text-center"><?php echo $id; ?></td>
                                 <td class="text-center"><?php echo substr($titulo, 0, 25); ?></td>
                                 <td class="text-center"><?php echo substr($conteudo, 0, 25); ?></td>
