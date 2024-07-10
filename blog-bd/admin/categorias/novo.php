@@ -58,25 +58,19 @@ $verifica->SessaoUsuario('../../blog.php');
       <div class="position-sticky pt-3">
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="#">
+            <a class="nav-link" aria-current="page" href="../dashboard.php">
             <i class="fa fa-fw fa-star"></i>&nbsp;&nbsp;
               Inicio
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="../usuarios/gerenciar.php">
             <i class="fa fa-fw fa-user"></i>&nbsp;&nbsp;
               Usuarios
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
-            <i class="fa fa-fw fa-users"></i>&nbsp;&nbsp;
-              Permissões de usuários
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="../situacoes/gerenciar.php">
             <i class="fa fa-fw fa-handshake"></i>&nbsp;&nbsp;
               Situação dos Usuários
             </a>
@@ -88,13 +82,13 @@ $verifica->SessaoUsuario('../../blog.php');
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="../posts/gerenciar.php">
             <i class="fa fa-fw fa-comments"></i>&nbsp;&nbsp;
               Postagens
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="logs/gerenciar.php">
             <i class="fa fa-fw fa-bars"></i>&nbsp;&nbsp;
                 Logs
             </a>
