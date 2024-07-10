@@ -16,7 +16,7 @@ $arquivo = 'Relatorio-usuarios-' . $usuario . '.xls';
 $html = '';
 $html .= '<table border="1">';
 $html .= '<tr>';
-$html .= '<td colspan="2" style="text-align:center;background-color: blue;color:white;"><b>Relatorio de Niveis do Usuario - ' . $usuario .'</b></td>';
+$html .= '<td colspan="5" style="text-align:center;background-color: blue;color:white;"><b>Relatorio de Niveis do Usuario - ' . $usuario .'</b></td>';
 $html .= '</tr>';
 $html .= '<tr>';
 $html .= '<td style="text-align:center;background-color: #44749F;color: #fff;"><b>ID</b></td>';
