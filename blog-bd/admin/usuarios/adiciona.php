@@ -72,12 +72,6 @@ $verifica->SessaoUsuario('../../blog.php');
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../permissoes/gerenciar.php">
-            <i class="fa fa-fw fa-users"></i>&nbsp;&nbsp;
-              Permissões de usuários
-            </a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" href="../situacoes/gerenciar.php">
             <i class="fa fa-fw fa-handshake"></i>&nbsp;&nbsp;
               Situação dos Usuários
@@ -96,7 +90,7 @@ $verifica->SessaoUsuario('../../blog.php');
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="../logs/gerenciar.php">
             <i class="fa fa-fw fa-bars"></i>&nbsp;&nbsp;
                 Logs
             </a>
