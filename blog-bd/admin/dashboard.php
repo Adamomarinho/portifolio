@@ -11,15 +11,6 @@ $logado = new Login();
 $logado->VerificaUsuario();
 $nomeusuario = $logado->PegaDadosSessao('nomeuser');
 
-/*
-if((!isset($_SESSION['id'])) AND (!isset($_SESSION['nome'])))
-{
-    $_SESSION['msg'] = msg('danger','Erro: Necessário realizar o login para acessar a página!');
-    $destino = '../blog.php';
-    redireciona(3, $destino);
-}
-*/
-
 ?>
 
 <!doctype html>
@@ -85,13 +76,19 @@ if((!isset($_SESSION['id'])) AND (!isset($_SESSION['nome'])))
             </a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="niveis/gerenciar.php">
+            <i class="fa fa-fw fa-users"></i>&nbsp;&nbsp;
+              Niveis de usuários
+            </a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="situacoes/gerenciar.php">
             <i class="fa fa-fw fa-handshake"></i>&nbsp;&nbsp;
               Situação dos Usuários
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="categorias/gerenciar.php">
+            <a class="nav-link" href="#">
             <i class="fa fa-fw fa-list"></i>&nbsp;&nbsp;
               Categorias
             </a>
@@ -125,7 +122,7 @@ if((!isset($_SESSION['id'])) AND (!isset($_SESSION['nome'])))
               <br>
                   <div class="row g-0 fluid">
                       <div class="col-md-2" style="height: 10%;">
-                          <a href="#">
+                          <a href="posts/gerenciar.php">
                               <button class="btn btn-primary btn-icon">
                                 <i class="fa fa-window-restore fa-3x fa-fw"></i>
                               </button>
@@ -134,16 +131,23 @@ if((!isset($_SESSION['id'])) AND (!isset($_SESSION['nome'])))
                       <div class="col-md-2" style="margin-left: -8%;">
                           <div class="card-body">
                               <h5 class="card-title text-center" style="margin-top: -10%;">
-                                  <b>
-                                  <a href="#" style="text-decoration: none;">116</a>                                  </b>
+                                  <?php 
+                                      $conecta = new Sistema();
+                                      $sql = "SELECT count(id) as contagemposts from posts ORDER BY id DESC LIMIT 1";
+                                      $busca = $conecta->conectado();
+                                      $resultado = $busca->query($sql);          
+                                      $mostra = $resultado->fetch(PDO::FETCH_ASSOC);
+                                      $quantidade = $mostra["contagemposts"];
+                                        echo "<b><a href='posts/gerenciar.php' style='text-decoration: none;'>" . $quantidade . '</a></b>';
+                                  ?>    
                               </h5>
                               <p class="card-text">
-                              <a href="#" style="text-decoration: none;">POSTS</a>
+                              <a href="posts/gerenciar.php" style="text-decoration: none;">POSTS</a>
                               </p>
                           </div>
                       </div>
                       <div class="col-md-2" style="height: 10%;margin-left: -3%;">
-                          <a href="#">
+                          <a href="categorias/gerenciar.php">
                               <button class="btn btn-warning btn-icon">
                                 <i class="fa fa-archive fa-3x fa-fw"></i>
                               </button>
@@ -152,16 +156,23 @@ if((!isset($_SESSION['id'])) AND (!isset($_SESSION['nome'])))
                       <div class="col-md-2" style="margin-left: -6%;">
                           <div class="card-body">
                               <h5 class="card-title text-center" style="margin-top: -10%;">
-                                  <b>
-                                  <a href="#" style="text-decoration: none;">2</a>                                  </b>
+                                  <?php 
+                                      $conecta = new Sistema();
+                                      $sql = "SELECT count(idcat) as contagemcat from categoria ORDER BY idcat DESC LIMIT 1";
+                                      $busca = $conecta->conectado();
+                                      $resultado = $busca->query($sql);          
+                                      $mostra = $resultado->fetch(PDO::FETCH_ASSOC);
+                                      $quantidade = $mostra["contagemcat"];
+                                        echo "<b><a href='categorias/gerenciar.php' style='text-decoration: none;'>" . $quantidade . '</a></b>';
+                                  ?>  
                               </h5>
                               <p class="card-text">
-                              <a href="#" style="text-decoration: none;">CATEGORIAS</a>
+                              <a href="categorias/gerenciar.php" style="text-decoration: none;">&nbsp;&nbsp;CATEGORIAS</a>
                               </p>
                           </div>
                       </div>
                       <div class="col-md-2" style="height: 10%;margin-left: -3%;">
-                          <a href="#">
+                          <a href="situacoes/gerenciar.php">
                               <button class="btn btn-danger btn-icon">
                               <i class="fas fa-cogs fa-3x fa-fw"></i>
                               </button>
@@ -170,16 +181,23 @@ if((!isset($_SESSION['id'])) AND (!isset($_SESSION['nome'])))
                       <div class="col-md-2" style="margin-left: -6%;">
                           <div class="card-body">
                               <h5 class="card-title text-center" style="margin-top: -10%;">
-                                  <b>
-                                  <a href="#" style="text-decoration: none;">3</a>                                  </b>
+                                  <?php 
+                                      $conecta = new Sistema();
+                                      $sql = "SELECT count(idsit) as contagemsit from situacao ORDER BY idsit DESC LIMIT 1";
+                                      $busca = $conecta->conectado();
+                                      $resultado = $busca->query($sql);          
+                                      $mostra = $resultado->fetch(PDO::FETCH_ASSOC);
+                                      $quantidade = $mostra["contagemsit"];
+                                        echo "<b><a href='situacoes/gerenciar.php' style='text-decoration: none;'>" . $quantidade . '</a></b>';
+                                  ?>  
                               </h5>
                               <p class="card-text">
-                              <a href="#" style="text-decoration: none;">PERMISSOES</a>
+                              <a href="situacoes/gerenciar.php" style="text-decoration: none;">SITUACAO</a>
                               </p>
                           </div>
                       </div>
                       <div class="col-md-2" style="height: 10%;margin-left: -2%;">
-                          <a href="#">
+                          <a href="usuarios/gerenciar.php">
                               <button class="btn btn-success btn-icon">
                               <i class="fa fa-user fa-3x fa-fw"></i>
                               </button>
@@ -188,11 +206,18 @@ if((!isset($_SESSION['id'])) AND (!isset($_SESSION['nome'])))
                       <div class="col-md-2" style="margin-left: -7%;">
                           <div class="card-body">
                               <h5 class="card-title text-center" style="margin-top: -10%;">
-                                  <b>
-                                  <a href="#" style="text-decoration: none;">2</a>                                  </b>
+                                  <?php 
+                                      $conecta = new Sistema();
+                                      $sql = "SELECT count(idusuario) as contagemuser from usuario ORDER BY idusuario DESC LIMIT 1";
+                                      $busca = $conecta->conectado();
+                                      $resultado = $busca->query($sql);          
+                                      $mostra = $resultado->fetch(PDO::FETCH_ASSOC);
+                                      $quantidade = $mostra["contagemuser"];
+                                        echo "<b><a href='usuarios/gerenciar.php' style='text-decoration: none;'>" . $quantidade . '</a></b>';
+                                  ?>  
                               </h5>
                               <p class="card-text">
-                              <a href="#" style="text-decoration: none;">USUARIOS</a>
+                              <a href="usuarios/gerenciar.php" style="text-decoration: none;">&nbsp;&nbsp;USUARIOS</a>
                               </p>
                           </div>
                       </div>            
@@ -203,7 +228,7 @@ if((!isset($_SESSION['id'])) AND (!isset($_SESSION['nome'])))
               <br>
                   <div class="row g-0 fluid">
                       <div class="col-md-2" style="height: 10%;">
-                          <a href="#">
+                          <a href="niveis/gerenciar.php">
                               <button class="btn btn-info btn-icon text-white">
                                 <i class="fa fa-solid fa-users fa-3x fa-fw"></i>
                               </button>
@@ -212,34 +237,23 @@ if((!isset($_SESSION['id'])) AND (!isset($_SESSION['nome'])))
                       <div class="col-md-2" style="margin-left: -8%;">
                           <div class="card-body">
                               <h5 class="card-title text-center" style="margin-top: -10%;">
-                                  <b>
-                                  <a href="#" style="text-decoration: none;">3</a>                                  </b>
+                                  <?php 
+                                      $conecta = new Sistema();
+                                      $sql = "SELECT count(idnivel) as contagemnvl from nivel ORDER BY idnivel DESC LIMIT 1";
+                                      $busca = $conecta->conectado();
+                                      $resultado = $busca->query($sql);          
+                                      $mostra = $resultado->fetch(PDO::FETCH_ASSOC);
+                                      $quantidade = $mostra["contagemnvl"];
+                                        echo "<b><a href='niveis/gerenciar.php' style='text-decoration: none;'>" . $quantidade . '</a></b>';
+                                  ?>  
                               </h5>
                               <p class="card-text">
-                              <a href="#" style="text-decoration: none;">NIVEIS</a>
-                              </p>
-                          </div>
-                      </div>
-                      <div class="col-md-2" style="height: 10%;margin-left: -3%;">
-                          <a href="#">
-                              <button class="btn btn-warning btn-icon">
-                                <i class="fa fa-address-card fa-3x fa-fw"></i>
-                              </button>
-                          </a>    
-                      </div>
-                      <div class="col-md-2" style="margin-left: -6%;">
-                          <div class="card-body">
-                              <h5 class="card-title text-center" style="margin-top: -10%;">
-                                  <b>
-                                  <a href="#" style="text-decoration: none;">4</a>                                  </b>
-                              </h5>
-                              <p class="card-text">
-                              <a href="#" style="text-decoration: none;">SITUACAO</a>
+                              <a href="niveis/gerenciar.php" style="text-decoration: none;">NIVEIS</a>
                               </p>
                           </div>
                       </div>
                       <div class="col-md-2" style="height: 10%;margin-left: -4%;">
-                          <a href="#">
+                          <a href="logs/gerenciar.php">
                               <button class="btn btn-secondary btn-icon">
                                 <i class="fa fa-tasks fa-3x fa-fw"></i>
                               </button>
@@ -248,12 +262,18 @@ if((!isset($_SESSION['id'])) AND (!isset($_SESSION['nome'])))
                       <div class="col-md-2" style="margin-left: -6%;">
                           <div class="card-body">
                               <h5 class="card-title text-center" style="margin-top: -10%;">
-                                  <b>
-                                    <a href="#" style="text-decoration: none;">1</a>
-                                  </b>
+                                  <?php 
+                                      $conecta = new Sistema();
+                                      $sql = "SELECT count(id) as contagemlogs from logs ORDER BY id DESC LIMIT 1";
+                                      $busca = $conecta->conectado();
+                                      $resultado = $busca->query($sql);          
+                                      $mostra = $resultado->fetch(PDO::FETCH_ASSOC);
+                                      $quantidade = $mostra["contagemlogs"];
+                                        echo "<b><a href='logs/gerenciar.php' style='text-decoration: none;'>" . $quantidade . '</a></b>';
+                                  ?>  
                               </h5>
                               <p class="card-text">
-                              <a href="#" style="text-decoration: none;">LOGS</a>
+                              <a href="logs/gerenciar.php" style="text-decoration: none;">LOGS</a>
                               </p>
                           </div>
                       </div>
