@@ -1,4 +1,9 @@
-
+<?php
+  //require '../vendor/autoload.php';
+  use PHPMailer\PHPMailer\PHPMailer;
+  use PHPMailer\PHPMailer\SMTP;
+  use PHPMailer\PHPMailer\Exception;
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -21,8 +26,10 @@
 <?php
 
 require 'classes/usuario.php';
+require 'classes/email.php';
 
 $user = new UsuarioCrud();
+$email = new Email();
 
 $nome = $_POST['nome'];
 $email = $_POST['email'];

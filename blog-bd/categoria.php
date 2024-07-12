@@ -1,10 +1,8 @@
-<?php    
-
-require 'classes/posts.php';
-require 'classes/categoria.php';
-$cat = new CategoriaCrud();
-$posts = new PostsCrud();
-
+<?php
+    require 'classes/posts.php';
+    require 'classes/categoria.php';
+    $cat = new CategoriaCrud();
+    $posts = new PostsCrud();
 ?>
 <!doctype html>
 <html lang="en">
@@ -79,10 +77,8 @@ $posts = new PostsCrud();
           </li>
         </ul>
         <form class="d-flex">
-          <input class="form-control me-4" type="search" placeholder="Procurar aqui" aria-label="Search">
-          <button class="btn btn-outline-primary" name="buscar" type="submit">Buscar</button>
-          &nbsp;
-          <a href="admin/login.php" class="btn btn-success">Login</a>
+          <input class="form-control me-2" type="search" placeholder="Procurar aqui" aria-label="Search">
+          <button class="btn btn-outline-primary" type="submit">Buscar</button>
         </form>
       </div>
     </div>
@@ -93,6 +89,8 @@ $posts = new PostsCrud();
 
 <br>
 
+<main class="container-fluid">
+
 <?php    
 
 $conecta = new Sistema();
@@ -102,24 +100,23 @@ $resultado = $busca->prepare($sql);
 $resultado->execute();
 ?>
 
-<main class="container-fluid">
-
 <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
-    <?php
-            $controle = 0;
-            while($controle < $resultado->rowCount()){
-                $ativo = "";
-                if($controle == 0){
-                    $ativo = "active";
+            <?php
+                $controle = 0;
+                while($controle < $resultado->rowCount())
+                {
+                    $ativo = "";
+                    if($controle == 0)
+                    {
+                        $ativo = "active";
+                    }
+                    echo "<button type='button' data-bs-target='#myCarousel' data-bs-slide-to='$controle' class='$ativo'
+                    aria-current='true' aria-label='Slide $controle'></button>";
+                    $controle++;
                 }
-                echo "<button type='button' data-bs-target='#myCarousel' data-bs-slide-to='$controle' class='$ativo'
-                aria-current='true' aria-label='Slide $controle'></button>";
-                $controle++;
-            }
             ?>
     </div>
-
     <div class="carousel-inner">
             <?php
                 $controle = 0;
@@ -145,9 +142,7 @@ $resultado->execute();
                     $controle++;
                 }
             ?>  
-
     </div>
-
     <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Previous</span>
@@ -158,13 +153,20 @@ $resultado->execute();
     </button>
   </div>
 
-  <?php    
+  <?php
 
-      $posts->ListaDadosPostUsuario(1);
-      $posts->ListaDadosPostUsuario(2);
-      $posts->ListaDadosPostUsuario(3);
+    $nomecat1 = $cat->PegaDadosCategoria(1, 'nomecat');
+    $posts->ListaDadosPostCategoria(1, $nomecat1);
+    $nomecat2 = $cat->PegaDadosCategoria(2, 'nomecat');
+    $posts->ListaDadosPostCategoria(2, $nomecat2);
+    $nomecat3 = $cat->PegaDadosCategoria(3, 'nomecat');
+    $posts->ListaDadosPostCategoria(3, $nomecat3);
+    $nomecat4 = $cat->PegaDadosCategoria(4, 'nomecat');
+    $posts->ListaDadosPostCategoria(4, $nomecat4);
 
   ?>
+
+<br><br>
 
 </main>
 

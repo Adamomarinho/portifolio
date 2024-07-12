@@ -1,10 +1,8 @@
-<?php    
-
-require 'classes/posts.php';
-require 'classes/categoria.php';
-$cat = new CategoriaCrud();
-$posts = new PostsCrud();
-
+<?php
+    require 'classes/posts.php';
+    require 'classes/categoria.php';
+    $cat = new CategoriaCrud();
+    $posts = new PostsCrud();
 ?>
 <!doctype html>
 <html lang="en">
@@ -71,7 +69,7 @@ $posts = new PostsCrud();
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
-        <li class="nav-item">
+          <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="blog.php">Inicio</a>
           </li>
           <li class="nav-item">
@@ -79,10 +77,8 @@ $posts = new PostsCrud();
           </li>
         </ul>
         <form class="d-flex">
-          <input class="form-control me-4" type="search" placeholder="Procurar aqui" aria-label="Search">
-          <button class="btn btn-outline-primary" name="buscar" type="submit">Buscar</button>
-          &nbsp;
-          <a href="admin/login.php" class="btn btn-success">Login</a>
+          <input class="form-control me-2" type="search" placeholder="Procurar aqui" aria-label="Search">
+          <button class="btn btn-outline-primary" type="submit">Buscar</button>
         </form>
       </div>
     </div>
@@ -93,6 +89,8 @@ $posts = new PostsCrud();
 
 <br>
 
+<main class="container-fluid">
+
 <?php    
 
 $conecta = new Sistema();
@@ -102,24 +100,23 @@ $resultado = $busca->prepare($sql);
 $resultado->execute();
 ?>
 
-<main class="container-fluid">
-
 <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
-    <?php
-            $controle = 0;
-            while($controle < $resultado->rowCount()){
-                $ativo = "";
-                if($controle == 0){
-                    $ativo = "active";
+            <?php
+                $controle = 0;
+                while($controle < $resultado->rowCount())
+                {
+                    $ativo = "";
+                    if($controle == 0)
+                    {
+                        $ativo = "active";
+                    }
+                    echo "<button type='button' data-bs-target='#myCarousel' data-bs-slide-to='$controle' class='$ativo'
+                    aria-current='true' aria-label='Slide $controle'></button>";
+                    $controle++;
                 }
-                echo "<button type='button' data-bs-target='#myCarousel' data-bs-slide-to='$controle' class='$ativo'
-                aria-current='true' aria-label='Slide $controle'></button>";
-                $controle++;
-            }
             ?>
     </div>
-
     <div class="carousel-inner">
             <?php
                 $controle = 0;
@@ -145,9 +142,7 @@ $resultado->execute();
                     $controle++;
                 }
             ?>  
-
     </div>
-
     <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Previous</span>
@@ -158,13 +153,31 @@ $resultado->execute();
     </button>
   </div>
 
-  <?php    
+  <?php
 
-      $posts->ListaDadosPostUsuario(1);
-      $posts->ListaDadosPostUsuario(2);
-      $posts->ListaDadosPostUsuario(3);
+    $id = $_GET['id'];
+    $idpost = $posts->PegaDadosPost($id, 'id');
+    $titulopost = $posts->PegaDadosPost($id, 'titulo');
+    $conteudopost = $posts->PegaDadosPost($id, 'conteudo');
+    $categoriapost = $posts->PegaDadosPost($id, 'categoria');
+    $categoria = $cat->PegaDadosCategoria($categoriapost, 'nomecat');
 
   ?>
+
+<br>
+
+<div class="card">
+  <div class="card-header text-center">
+      <b>Categoria:</b> &nbsp;<?php echo $categoria; ?>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"><b>Titulo:</b> &nbsp;<?php echo $titulopost; ?></h5>
+    <p class="card-text"><b>ID:</b> &nbsp;<?php echo $idpost; ?></p>
+    <p class="card-text"><b>Conteudo:</b> &nbsp;<?php echo $conteudopost; ?></p>
+  </div>
+</div>
+
+<br>
 
 </main>
 
