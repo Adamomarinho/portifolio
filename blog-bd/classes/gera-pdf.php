@@ -23,7 +23,7 @@ class Pdf
         //RENDERIZAR O PDF
         $pdf->render();
         //NOMEAR O PDF GERADO
-        $pdf->stream($nome_arquivo, array("Attachment" => false));
+        $pdf->stream($nomepdf, array("Attachment" => false));
     }
     
 }
