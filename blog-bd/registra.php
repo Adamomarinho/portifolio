@@ -26,10 +26,8 @@
 <?php
 
 require 'classes/usuario.php';
-require 'classes/email.php';
 
 $user = new UsuarioCrud();
-$email = new Email();
 
 $nome = $_POST['nome'];
 $email = $_POST['email'];
