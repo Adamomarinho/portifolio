@@ -117,7 +117,7 @@
                                         </form>    
                                     </div>
                                     <div class="tab-pane fade" id="pills-registrar" role="tabpanel" aria-labelledby="pills-registrar-tab">
-                                        <form method="POST" action="registrar.php">
+                                        <form method="POST" action="../registrar.php">
                                             <div class="form px-4">
                                                 <input type="text" name="" class="form-control" placeholder="Digite seu nome completo aqui">
                                                 <input type="text" name="" class="form-control" placeholder="email@site.com.br">
