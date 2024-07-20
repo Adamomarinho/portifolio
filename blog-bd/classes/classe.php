@@ -28,12 +28,20 @@ class Sistema
             die();
         }
     }
+// Segue abaixo um exemplo de como se utiliza esta classe com a função
+// $conecta = new Sistema();
+// $sql = "SELECT * from tabela";
+// $busca = $conecta->conectado();
+// $resultado = $busca->query($sql);  
 
 }
 
 function msg($tipo, $mensagem)
 {
     echo "<div class='alert alert-{$tipo}'>{$mensagem}</div>";
+    // Segue abaixo um exemplo de como se utiliza esta função de mensagem
+    // msg('success','Mensagem enviada com sucesso');
+    // msg('danger','Não foi possivel enviar a mensagem');
 }
 
 function logs($usuario,$acao) 
@@ -48,6 +56,8 @@ function logs($usuario,$acao)
     $sql->bindValue(":ip", $ip);
     $sql->bindValue(":acao", $acao);
     $sql->execute();
+    // Segue abaixo um exemplo de como se utiliza esta função de logs
+    // logs($variaveldonomedousuario,$textodapaginadeondeousuarioesta);
 }
 
 function pegacaminho()
@@ -56,6 +66,8 @@ function pegacaminho()
     $url = explode('?', $url);
     $url = $url[0];
     return $url;
+    // Segue abaixo um exemplo de como se utiliza esta função pegar caminho
+    // pegacaminho();
 }
 
 function pegaurl()
@@ -73,33 +85,35 @@ function pegaurl()
     {			
         echo "Página não encontrada";
     }
+    // Segue abaixo um exemplo de como se utiliza esta função de pegar url
+    // pegaurl();
 }
-function mostra_dados_tabela($tabela)
+function mostra_dados_tabela($id,$campo)
 {
     $link = new Sistema();
     $linka = $link->conectado();
     $linka->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $sql = "SELECT * FROM " . $tabela;
+    $sql = "SELECT * FROM tabela where id = " . $id;
     $sql = $linka->prepare($sql);
     $sql->execute();
     $dados = $sql->fetchAll(PDO::FETCH_ASSOC);
-    return $dados;
+    return $dados[$campo];
+    // Segue abaixo um exemplo de como se utiliza esta função de mostrar os dados do campo de uma tabela
+    // mostra_dados_tabela(1, 'nomeusuario');
 }
-
-// Função para converter qualquer data que esteja no formato errado na data brasileira
-// Exemplo: echo data($variavel-com-a-data);
 
 function databr($data)
 {
-return date("d/m/Y", strtotime($data));
+    return date("d/m/Y", strtotime($data));
+    // Função para converter qualquer data que esteja no formato errado na data brasileira
+    // Exemplo: echo data($variavel-com-a-data);
 }
-
-// Função para converter qualquer data que esteja no formato errado na data brasileira
-// Exemplo: echo data($variavel-com-a-data);
 
 function redireciona($tempo, $dir)
 {
     echo "<meta http-equiv='refresh' content='{$tempo}; url={$dir}'>";
+    // Função para redirecionar para um novo destino
+    // redireciona(3, 'destino.php');
 }
 
 // Função para validar o token
