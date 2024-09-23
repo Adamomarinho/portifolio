@@ -1,0 +1,1 @@
+Formulario para consulta simples de dados de empresas por CNPJ, antes de utilizar instale as dependencias do PHPOffice atraves do composer usando o composer install ou caso ja o tenha utilize o composer update.
